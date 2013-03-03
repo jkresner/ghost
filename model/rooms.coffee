@@ -1,6 +1,8 @@
 # owner: user id
-# name, description: String
+# name: String
+# description: String
 # ispublic: Boolean
+# created_at
 
 Rooms = new Meteor.Collection 'rooms'
 
