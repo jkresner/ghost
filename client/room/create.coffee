@@ -1,0 +1,1 @@
+Template.roomCreate.error = -> Session.get 'roomCreateError'

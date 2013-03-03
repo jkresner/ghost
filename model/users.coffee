@@ -1,0 +1,2 @@
+generateAvatart = (user) ->
+  #todo => implement
