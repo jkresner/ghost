@@ -12,6 +12,8 @@ Template.hello.events
 
 
 if Meteor.isClient
+  document.body.appendChild Meteor.render ->
+    Template.roomDetail Rooms.findOne()
   $log 'welcome to ghost post'
 
 

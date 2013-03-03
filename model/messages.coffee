@@ -4,5 +4,5 @@
 # text
 # created_at
 
-Threads = new Meteor.Collection 'messages'
+Messages = new Meteor.Collection 'messages'
 
