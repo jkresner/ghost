@@ -6,3 +6,8 @@
 autopublish
 insecure
 preserve-inputs
+coffeescript
+jquery
+random
+underscore
+accounts-ui
