@@ -1,6 +1,5 @@
 # owner: user id
-# title, description: String
-# url_github: String
+# name, description: String
 # ispublic: Boolean
 
 Rooms = new Meteor.Collection 'rooms'
@@ -27,7 +26,7 @@ Meteor.methods
   createRoom: (data) ->
     d = data || {}
 
-    if (! (typeof d.name is "string" && d.name.length && ) )
+    if (! (typeof d.name is "string" && d.name.length) )
 
       console.log 'required param missing'
       throw new Meteor.Error 400, 'Required parameter missing'
