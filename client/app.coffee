@@ -6,4 +6,4 @@ Meteor.startup ->
 
   $ ->
     window.router = new GhostRouter()
-    Backbone.history.start pushState: true
+    Backbone.history.start pushState: false

@@ -27,6 +27,7 @@ Rooms.allow
 Meteor.methods
   createRoom: (data) ->
     d = data || {}
+    if !d.ispubilc? then d.public = true else d.public = false
 
     if (! (typeof d.name is "string" && d.name.length) )
 
@@ -36,10 +37,9 @@ Meteor.methods
     if d.name.length > 100 then throw new Meteor.Error 413, "Name too long"
     if !@userId then throw new Meteor.Error 403, "You must be logged in"
 
-    Room.insert
+    Rooms.insert
       owner: @userId
       name: d.name,
-      description: d.description
       ispublic: !! d.ispublic
-      start: d.start
-      end: d.end
+      # start: d.start
+      # end: d.end

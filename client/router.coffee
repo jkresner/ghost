@@ -1,9 +1,9 @@
 class GhostRouter extends Backbone.Router
 
   routes:
-    "": "roomList",
+    "": "roomList"
+    "new-room": "roomCreate"
     "rooms/:roomId": "roomDetail"
-    "rooms/create": "roomCreate"
     "threads/:threadId": "threadDetail"
     "threads/create": "threadCreate"
     "user/:userId": "userDetail"
@@ -33,6 +33,7 @@ class GhostRouter extends Backbone.Router
       Session.set "roomId", roomId
 
   roomCreate: () ->
+    console.log("roomCreate called")
     @showPage 'roomCreate'
     Session.set "view", 'roomCreate'
 
