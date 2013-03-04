@@ -39,7 +39,7 @@ Meteor.methods
 
     Rooms.insert
       owner: @userId
-      name: d.name,
+      name: d.name
       ispublic: !! d.ispublic
       # start: d.start
       # end: d.end
