@@ -27,7 +27,6 @@ Meteor.methods
 
     if !@userId then throw new Meteor.Error 403, "You must be logged in"
 
-    console.log data
     if not data.roomId
       throw new Meteor.Error 403, "You must be logged in"
 
@@ -43,4 +42,6 @@ Meteor.methods
     thread = Threads.findOne data.threadId
     data.threadId = thread.id
     if data.roomId == thread.roomId
+      console.log "INSERTING"
+      console.log data
       Messages.insert data

@@ -1,3 +1,4 @@
 Template.threadDetail.messages = ->
-  threads = Messages.find({threadId: Session.get('roomId')}, {sort: {createdAt: -1}})
+  Messages.find({threadId: @id}, {sort: {createdAt: -1}})
+
 

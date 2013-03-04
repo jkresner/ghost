@@ -1,3 +1,6 @@
+Meteor.autorun ->
+  Meteor.subscribe 'room_threads', Session.get('roomId')
+
 Accounts.ui.config
   requestPermissions:
     facebook: ['email', 'user_events', 'user_groups', 'read_friendlists', 'publish_actions', ]
