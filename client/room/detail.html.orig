@@ -1,0 +1,22 @@
+<template name="roomDetail">
+<div id="roomDetail" class="page">
+  roomDetail
+<<<<<<< HEAD
+  <div id="room-{{id}}" class="room">
+    <h1>{{name}}</h1>
+=======
+  <div id="room-{{info}}" class="room">
+    <form id="thread-post" method="POST">
+      <input name="text" type="text" placeholder="POST. What are you afraid of?" size="64"/>
+      <button type="submit">BOO(M)</button>
+    </form>
+    <h1>{{name}}</h1> 
+>>>>>>> c33606524dc2f6afe1bb3221ed3ed2082439eeb8
+    <div id="threads">
+      {{#each threads}}
+        {{> threadDetail }}
+      {{/each}}
+    </div>
+  </div>
+</div>
+</template>

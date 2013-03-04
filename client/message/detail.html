@@ -1,5 +1,9 @@
 <template name="messageDetail">
 <div id="message-{{id}}" class="message">
+  <div class="user">
+    <span class="avatar"><img src="{{avatarUrl}}"/></span>
+    <span class="name">{{user.name}}</span>
+  </div>
   <div>{{text}}</div>
   <div><span class="timestamp">Posted at {{created_at}}</div>
 </div>
