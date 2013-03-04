@@ -1,7 +1,11 @@
 <template name="roomDetail">
 <div id="roomDetail">
   roomDetail
-  <div id="room-{{id}}" class="room">
+  <div id="room-{{info}}" class="room">
+    <form id="thread-post" method="POST">
+      <input name="text" type="text" placeholder="POST. What are you afraid of?" size="64"/>
+      <button type="submit">BOO(M)</button>
+    </form>
     <h1>{{name}}</h1> 
     <div id="threads">
       {{#each threads}}
