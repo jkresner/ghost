@@ -1,8 +1,10 @@
 <template name="threadDetail">
-<div id="thread-{{id}}" class="thread">
-  {{#each messages}}
-    {{> messageDetail }}
-  {{/each}}
+<div id="threadDetail" class="page">
+  <div id="thread-{{id}}" class="thread">
+    {{#each messages}}
+      {{> messageDetail }}
+    {{/each}}
+  </div>
 </div>
 
 </template>
