@@ -12,6 +12,16 @@ class GhostRouter extends Backbone.Router
   # Magic that displays the div with an ID named after the route
   initialize: ->
     $log 'Router.init:', @
+    # TODO: this should only iterate own properties, route functions shouldn't be on prototype
+    for own attr, val of @
+      $log 'attr: ', attr, ' val: ', val
+      if typeof @[attr] == 'function'
+        @[attr] = _.wrap (fn, args) -> 
+          $log '@,', @
+          $('.page').hide()
+          $('#' + attr).show()
+          fn.call @, args
+    null
 
   roomList: () ->
     @showPage 'roomList'
