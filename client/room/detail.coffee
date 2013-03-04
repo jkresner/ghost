@@ -8,7 +8,8 @@ Template.roomDetail.messages = ->
 
 Template.roomDetail.events = 
   'submit #thread-post': (evt) ->
-    data = $('#thread-post').serializeObject()
+    form = $('#thread-post')
+    data = form.serializeObject()
     message = 
       roomId: Session.get('roomId')
       text: data.text
@@ -16,6 +17,7 @@ Template.roomDetail.events =
     Meteor.call 'createMessage', message
     evt.stopPropagation()
     evt.preventDefault()
+    form[0].reset()
     return false
 
   
