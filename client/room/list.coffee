@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-
-
-
-=======
-# TODO: unused?
->>>>>>> d589afd99938b76dee14495ce11cc564116d4486
 Template.roomList.Rooms = ->
   Rooms.find().fetch()
 
@@ -19,4 +12,3 @@ Template.roomList.avatarUrl = ->
   if isAvatarExpired(user)
     generateAvatar(user)
   user.avatar.img
-
