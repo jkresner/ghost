@@ -4,9 +4,7 @@ Template.roomDetail.info = ->
   Session.get('roomId')
 
 Template.roomDetail.threads = ->
-  threads = Threads.find({})
-  console.log threads
-  threads
+  Threads.find({roomId: Session.get('roomId')}, {sort: {createdAt: -1}})
 
 Template.roomDetail.events = 
   'submit #thread-post': (evt) ->

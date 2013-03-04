@@ -1,5 +1,6 @@
 Meteor.autorun ->
   Meteor.subscribe 'room_threads', Session.get('roomId')
+  Meteor.subscribe 'rooms'
 
 Accounts.ui.config
   requestPermissions:

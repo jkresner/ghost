@@ -1,4 +1,6 @@
-
+Messages.remove({})
+Threads.remove({})
+Rooms.remove({})
 
 Meteor.startup ->
   console.log 'ghost server startup'

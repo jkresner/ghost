@@ -1,4 +1,7 @@
 Template.threadDetail.messages = ->
-  Messages.find({threadId: @id}, {sort: {createdAt: -1}})
+  console.log @id
+  console.log @
+  # TODO: pick up here, figure out why we can't see id here
+  Messages.find({threadId: @_id}, {sort: {createdAt: -1}})
 
 

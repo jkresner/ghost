@@ -10,7 +10,7 @@ Messages.allow
   insert: (userId, msg) -> false
   update: (userId, messages, fieldNames, mods) -> false
   remove: (userId, msgs) -> 
-    Users.findOne({id: userId}).admin ? true : false
+    Meteor.users.findOne({id: userId}).admin ? true : false
 
 
 Meteor.methods
@@ -40,7 +40,7 @@ Meteor.methods
         roomId: data.roomId
       data.threadId = id
     thread = Threads.findOne data.threadId
-    data.threadId = thread.id
+    data.threadId = thread._id
     if data.roomId == thread.roomId
       console.log "INSERTING"
       console.log data
