@@ -1,7 +1,7 @@
 class GhostRouter extends Backbone.Router
 
   routes:
-    "": "roomList"
+    "": "roomList",
     "rooms/:roomId": "roomDetail"
     "rooms/create": "roomCreate"
     "threads/:threadId": "threadDetail"
@@ -16,7 +16,7 @@ class GhostRouter extends Backbone.Router
     for own attr, val of @
       $log 'attr: ', attr, ' val: ', val
       if typeof @[attr] == 'function'
-        @[attr] = _.wrap (fn, args) -> 
+        @[attr] = _.wrap (fn, args) ->
           $log '@,', @
           $('.page').hide()
           $('#' + attr).show()
