@@ -5,5 +5,5 @@
 # email
 # created_at
 
-generateAvatart = (user) ->
+generateAvatart = (user) -> {}
   #todo => implement
