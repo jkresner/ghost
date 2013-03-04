@@ -1,7 +1,3 @@
-# TODO: unused?
-Template.roomList.Rooms = ->
-  Rooms.find().fetch()
-
 Template.roomList.avatarName  = ->
   user = Meteor.user
   if isAvatarExpired(user)

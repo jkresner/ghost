@@ -6,7 +6,7 @@ class GhostRouter extends Backbone.Router
     "rooms/:roomId": "roomDetail"
     "threads/:threadId": "threadDetail"
     "threads/create": "threadCreate"
-    "user/:userId": "userDetail"
+    "avatar/:avatarId": "avatarDetail"
     "rooms/create": "roomCreate"
 
   # Magic that displays the div with an ID named after the route
