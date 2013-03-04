@@ -1,4 +1,10 @@
 <template name="roomList">
   <div id="roomList" class="page">
+    <ul>
+      {{#each Rooms}}
+        <li><a href="rooms/{{id}}">{{name}}</li>
+      {{/each}}
+    </ul>
   </div>
 </template>
+
