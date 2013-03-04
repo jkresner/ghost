@@ -1,5 +1,6 @@
 Meteor.autorun ->
   Meteor.subscribe 'room_threads', Session.get('roomId')
+  Meteor.subscribe 'user_avatars', Meteor.userId()
   Meteor.subscribe 'rooms'
 
 Accounts.ui.config
@@ -11,3 +12,4 @@ Meteor.startup ->
   $ ->
     window.router = new GhostRouter()
     Backbone.history.start pushState: false
+  
