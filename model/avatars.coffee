@@ -21,7 +21,7 @@ avatarLastNames = [
 ]
 
 isAvatarExpired = (user) ->
-  avatar = Avatars.findOne(user.avatarId)
+  avatar = Session.get('avatar')
   return true if not avatar
   avatar.date < (new Date()).valueOf() - 24 * 60 * 60 *1000
 
@@ -32,5 +32,7 @@ generateAvatar = (user) ->
     name: Random.choice(avatarFirstNames) + Random.choice(avatarLastNames)
     userId: user._id
   id = Avatars.insert avatar
+  user.avatarId = id
+  Meteor.users.update(user)
   Session.set('avatar', avatar)
 
