@@ -35,11 +35,13 @@ Meteor.methods
       throw new Meteor.Error 400, 'Required parameter missing'
 
     if d.name.length > 100 then throw new Meteor.Error 413, "Name too long"
-    if !@userId then throw new Meteor.Error 403, "You must be logged in"
+    #if !@userId then throw new Meteor.Error 403, "You must be logged in" #commented out as we allow anonymous users
 
     Rooms.insert
-      owner: @userId
+      #owner: @userId # took out owner as that is not part of the current design
       name: d.name
       ispublic: !! d.ispublic
+      long: d.long
+      lat: d.lat
       # start: d.start
       # end: d.end
