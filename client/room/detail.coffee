@@ -4,7 +4,10 @@ Template.roomDetail.info = ->
   Session.get('roomId')
 
 Template.roomDetail.messages = ->
-  Messages.find({roomId: Session.get('roomId')}, {sort: {createdAt: -1}})
+  if not Session.get('roomId')
+    return []
+  msgs = Messages.find({roomId: Session.get('roomId')}, {sort: {createdAt: -1}})
+  msgs
 
 Template.roomDetail.events = 
   'submit #thread-post': (evt) ->

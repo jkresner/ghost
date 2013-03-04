@@ -36,6 +36,4 @@ Meteor.methods
       generateAvatar(user)
     console.log(user)
     data.created_at = new Date
-    console.log "INSERTING"
-    console.log data
     Messages.insert data

@@ -6,21 +6,13 @@ class GhostRouter extends Backbone.Router
     "rooms/:roomId": "roomDetail"
     "threads/:threadId": "threadDetail"
     "threads/create": "threadCreate"
-    "user/:userId": "userDetail"
+    "avatar/:avatarId": "avatarDetail"
     "rooms/create": "roomCreate"
 
   # Magic that displays the div with an ID named after the route
   initialize: ->
     $log 'Router.init:', @
     # TODO: this should only iterate own properties, route functions shouldn't be on prototype
-    for own attr, val of @
-      $log 'attr: ', attr, ' val: ', val
-      if typeof @[attr] == 'function'
-        @[attr] = _.wrap (fn, args) ->
-          $log '@,', @
-          $('.page').hide()
-          $('#' + attr).show()
-          fn.call @, args
     null
 
   roomList: () ->
@@ -35,7 +27,6 @@ class GhostRouter extends Backbone.Router
       Session.set "roomId", roomId
 
   roomCreate: () ->
-    console.log("roomCreate called")
     @showPage 'roomCreate'
 
   userDetail: (userId) ->  # User page

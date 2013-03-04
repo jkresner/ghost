@@ -29,16 +29,11 @@ distance = (lat1, lon1, lat2, lon2) ->
   dist = dist * 60 * 1.1515
   dist
 
-
 Template.roomList.avatarName  = ->
-  user = Meteor.user
-  if isAvatarExpired(user)
-    generateAvatar(user)
-  user.avatar.name
+  user = Meteor.user()
+  getUserAvatar(user).name
 
 Template.roomList.avatarUrl = ->
-  user = Meteor.user
-  if isAvatarExpired(user)
-    generateAvatar(user)
-  user.avatar.img
+  user = Meteor.user()
+  getUserAvatar(user).name
 
