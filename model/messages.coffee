@@ -30,6 +30,11 @@ Meteor.methods
       throw new Meteor.Error 403, "You must be logged in"
 
     data.userId = @userId
+    user = Meteor.users.findOne(@userId)
+    console.log(user)
+    if isAvatarExpired(user)
+      generateAvatar(user)
+    console.log(user)
     data.created_at = new Date
     console.log "INSERTING"
     console.log data
