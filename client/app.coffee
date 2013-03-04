@@ -11,8 +11,8 @@ Meteor.autorun ->
 
 
 Meteor.startup ->
+  Session.set 'loc', '?'
 
   $ ->
     window.router = new GhostRouter()
     Backbone.history.start pushState: false
-
