@@ -23,10 +23,23 @@ isAvatarExpired = (user) ->
   return true if not user.avatar.date
   user.avatar.date < (new Date()).valueOf() - 24 * 60 * 60 *1000
 
-generateAvatar = (user) -> 
+generateAvatar = (user) ->
   user.avatar = user.avatar or {}
   user.avatar.date = new Date()
   user.avatar.img = '/avatars/' + Random.choice(avatars)
   user.avatar.name = Random.choice(avatarFirstNames) + Random.choice(avatarLastNames)
-  console.log(user)
   Meteor.users.update(user)
+
+
+getGeoLocation = (user, foundLocationCallback, noLocationCallback) ->
+#  foundLocation = (location) ->
+#    Session.set('loc','lat: '+location.coords.latitude+', lan: '+ location.coords.longitude)
+#  noLocation = ->
+#    alert("No location")
+
+  console.log("Modernizr.geolocation", Modernizr.geolocation)
+  if Modernizr.geolocation
+    navigator.geolocation.getCurrentPosition(foundLocationCallback, noLocationCallback)
+
+
+

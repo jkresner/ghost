@@ -7,7 +7,9 @@ Accounts.ui.config
     facebook: ['email', 'user_events', 'user_groups', 'read_friendlists', 'publish_actions', ]
 
 Meteor.startup ->
+  Session.set 'loc', '?'
 
   $ ->
     window.router = new GhostRouter()
     Backbone.history.start pushState: false
+
