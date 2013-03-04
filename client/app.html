@@ -7,27 +7,22 @@
 
 <body>
 
+  <div id="avatarDetail" class="page">
+    {{> avatarDetail }}
+  </div>
 
-  {{#if currentUser}}
-    <div id="avatarDetail" class="page">
-      {{> avatarDetail }}
-    </div>
+  <div id="roomCreate" class="page">
+    {{> roomCreate }}
+  </div>
 
-    <div id="roomCreate" class="page">
-      {{> roomCreate }}
-    </div>
+  <div id="roomList" class="page">
+    {{> roomList }}
+  </div>
 
-    <div id="roomList" class="page">
-      {{> roomList }}
-    </div>
+  <div id="roomDetail" class="page">
+    {{> roomDetail }}
+  </div>
 
-    <div id="roomDetail" class="page">
-      {{> roomDetail}}
-    </div>
-
-  {{else}}
-    {{> homeExternal}}
-  {{/if}}
+  {{> login }}
 
 </body>
-
