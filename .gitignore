@@ -1,0 +1,23 @@
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+# emacs temp files
+*~
+# vi temp files
+\.\#*
+\#*
+*.swp
+# RubyMine
+.idea
+
+# jasmine-headless-webkit
+.jhw-cache
+
+# sass
+.sass-cache
+
+# local config files
+env_rc
+
+.DS_Store
