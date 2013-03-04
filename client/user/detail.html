@@ -1,25 +1,20 @@
 <template name="userDetail">
-<div id="userDetail" class="page">
-  <h2>User Detail</h2>
-  
-  h3. GhostPost Avatar
-  
-  <dl>
-    <dd>Anonymous Name:</dd>
-    <dt></dt>
-  
-    <dd>Real Name</dd>
-    <dt></dt>
-  
-    <dd>Email:</dd>
-    <dt></dt>
-  
-    <dd>Created at</dd>
-    <dt></dt>
-  
-  </dl>
-  
-  
-  Facebook Connected? - {{status}}
-</div>
+  <div id="userDetail" class="page">
+    <h2>User Detail</h2>
+
+      Facebook Status: {{{status}}}
+
+
+      <ul class="dl-horizontal">
+
+        <li> GhostPost Avatar: {{avatar}}</li>
+
+        <li> Anonymous Name: {{name}}</li>
+
+        <li> Real Name: {{real_name}}</li>
+
+        <li> Email:: {{email}}</li>
+
+      </ul>
+  </div>
 </template>
