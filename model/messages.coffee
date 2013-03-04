@@ -1,6 +1,5 @@
 # id
 # user_id: user id
-# thread_id: room id
 # text
 # created_at
 
@@ -32,16 +31,6 @@ Meteor.methods
 
     data.userId = @userId
     data.created_at = new Date
-    thread = null
-    if data.thread is undefined
-      id = Threads.insert
-        created_at: new Date()
-        startingUser: @userId
-        roomId: data.roomId
-      data.threadId = id
-    thread = Threads.findOne data.threadId
-    data.threadId = thread._id
-    if data.roomId == thread.roomId
-      console.log "INSERTING"
-      console.log data
-      Messages.insert data
+    console.log "INSERTING"
+    console.log data
+    Messages.insert data

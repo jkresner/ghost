@@ -1,1 +1,0 @@
-Template.threadCreate.error = -> Session.get 'threadCreateError'
