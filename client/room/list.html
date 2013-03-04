@@ -1,6 +1,10 @@
 <template name="roomList">
   <div id="roomList" class="page">
     <ul>
+      <li><a href="#new-room">Create Room</a></li>
+    </ul>
+
+    <ul>
       {{#each Rooms}}
         <li><a href="#rooms/{{_id}}">{{name}}</li>
       {{/each}}

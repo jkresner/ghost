@@ -35,14 +35,6 @@ class GhostRouter extends Backbone.Router
   roomCreate: () ->
     console.log("roomCreate called")
     @showPage 'roomCreate'
-    Session.set "view", 'roomCreate'
-
-  threadDetail: (threadId) ->  # list of messages
-    @showPage 'threadDetail'
-    oldThread = Session.get "threadId"
-    if oldThread isnt threadId
-      Session.set "threadId", threadId
-    showPage()
 
   userDetail: (userId) ->  # User page
     @showPage 'userDetail'
