@@ -1,6 +1,7 @@
+
+
 Meteor.startup ->
   console.log 'ghost server startup'
-
 
 
 # Dev application
