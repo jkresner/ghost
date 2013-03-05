@@ -17,7 +17,6 @@ placeVote = (elt, value) ->
     avatarId: Session.get('avatar')._id # TODO: this should be set in the session for persisted avatars
   Meteor.call 'createVote', vote
 
-
 Template.roomDetail.events =
   'click #postMessage': (e, t) ->
 
@@ -26,7 +25,11 @@ Template.roomDetail.events =
       text: t.find('#postText').value
       avatar: Session.get('avatar')
 
-    Meteor.call 'createMessage', data
+    Meteor.call 'createMessage', data, (err, data) ->
+      if ! Meteor.user()?
+        Session.set('flash', "Your message posted successfully.")
+        redirectFn = -> router.navigate('me', {trigger: true})
+        setTimeout redirectFn, 2000
 
   'click .voteUp': (e) ->
     elt = $(e.currentTarget)

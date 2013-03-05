@@ -1,4 +1,8 @@
 Template.roomList.popularRooms = ->
+  # Messages.aggregate([
+  #   {$group: {_id: "$roomId", count: {$sum: 1}}}, 
+  #   {$sort: {count: 1}}, 
+  #   {$match: {createdAt > (new Date()).getTime() - 60*1000}})]
   Rooms.find({})
 
 
@@ -10,14 +14,14 @@ Template.roomList.rooms = ->
 
   # cache the user's GeoLocation
   cacheNothing = ->
-    alert 'If you share your location with us, we can show rooms near you!'
+    alert 'You are not sharing your location with GhostPost! Such a DOUCHE MOVE!'
     $log 'User has no GeoLocation'
 
   cacheGeoLocation = (l) ->
     $log 'Caching GeoLocation of user at lon: ', l.coords.longitude , ' / lat: ', l.coords.latitude
     Session.set 'userLoc', [ l.coords.longitude , l.coords.latitude ]
 
-  geo.getGeoLocation(cacheGeoLocation, cacheNothing)
+  geo.getGeoLocation(cacheGeoLocation, cacheNothing, {timeout: 8000})
 
   Rooms.find().fetch()
   #Session.get 'roomsListRooms'
@@ -57,7 +61,6 @@ Template.roomList.getDistanceToUser = ->
 
 Template.roomList.events
   'click #room-tabs a': (evt) ->
-    debugger
     elt = $(evt.currentTarget)
     $('#room-tab-content .tab').hide()
     $('#' + elt.data('tab')).show()

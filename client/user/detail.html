@@ -1,0 +1,11 @@
+<template name="userDetail">
+  {{#if currentUser}}
+    {{currentUser.profile.facebook.name}}
+  {{else}}
+    <div class="flash">{{Session.flash}}</div>
+    <h1>Sign in to save your avatar</h2>
+    {{loginButtons}}
+    <h3>Or you'll lose your posts next time you log in</h3>
+    <button id="no-login-button" onclick="window.history.back()">Ok I understand, take me back to my room</button>
+  {{/if }}
+</template>

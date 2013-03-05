@@ -1,3 +1,6 @@
+#Rooms.remove({})
+#Messages.remove({})
+
 Meteor.startup ->
   console.log "
       .-.   .-.   .-.     .--.                         |          S T P O S T\n

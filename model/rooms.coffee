@@ -36,11 +36,16 @@ Meteor.methods
 
     if d.name.length > 100 then throw new Meteor.Error 413, "Name too long"
     #if !@userId then throw new Meteor.Error 403, "You must be logged in" #commented out as we allow anonymous users
+    loc = null
+    if data.long
+      loc = [d.long, d.lat] 
 
-    Rooms.insert
+    roomData =
       owner: getUser() # took out owner as that is not part of the current design
       name: d.name
       ispublic: !! d.ispublic
-      loc: [d.long, d.lat]
-      # start: d.start
-      # end: d.end
+
+    if d.long? && d.lat?
+      roomData.loc = [d.long, d.lat]
+
+    gooms.insert roomData
