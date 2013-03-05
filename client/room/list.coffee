@@ -6,13 +6,12 @@ setRoomsListRooms = ->
   foundLocation = (location) ->
     # Session.set('loc','lat: '+location.coords.latitude+', lan: '+ location.coords.longitude);
     console.log('Looking for rooms close to lat: ' + location.coords.latitude = ' lon: '+ location.coords.longitude)
-    Session.set 'roomsListRooms', Rooms.find({$sort: "distance(this.lat, location.coords.latitude,  this.long, location.coords.latitude)" : 1}).fetch() #closeby
-
-    #db.test.find({$where: "sum(this.x, this.y) == 6"});
+    Session.set 'roomsListRooms', Rooms.find({ loc: { $within: { $centerSphere: [ [ location.coords.longitude, location.coords.latitude] , 10 / 3963.192] } } }).fetch()
 
   noLocation = ->
     console.log("no location found")
     Session.set 'roomsListRooms', Rooms.find().fetch() #most popular
+    console.log("roomsListRooms", Rooms.find().fetch())
 
   getGeoLocation(Meteor.user, foundLocation, noLocation)
 
