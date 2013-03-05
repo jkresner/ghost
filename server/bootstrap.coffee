@@ -1,7 +1,11 @@
 fs = __meteor_bootstrap__.require 'fs'
 
 Meteor.startup ->
-  console.log 'ghost server startup'
+  console.log "
+      .-.   .-.   .-.     .--.                         |          S T P O S T\n
+     | OO| | OO| | OO|   / _.-' .-.   .-.  .-.   .''.  |        O S T P O S T\n
+     |   | |   | |   |   \\  '-. '-'   '-'  '-'   '..'  |      H O S T P O S T\n
+     '^^^' '^^^' '^^^'    '--'                         |    G H O S T P O S T . i o\n"
 
 Meteor.avatars =
   _.map _.reject(fs.readdirSync('public/images/avatars'), (file) -> file == '.DS_Store'), (file) ->
