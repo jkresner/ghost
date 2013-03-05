@@ -15,6 +15,8 @@ Meteor.methods
   getAvatarImages: ->
     Meteor.avatarImages
 
+Rooms._ensureIndex({ loc : "2d" });
+
 # Dev application
 
 Accounts.onCreateUser (options, user) ->
