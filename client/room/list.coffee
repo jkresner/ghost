@@ -1,4 +1,8 @@
 Template.roomList.popularRooms = ->
+  # Messages.aggregate([
+  #   {$group: {_id: "$roomId", count: {$sum: 1}}}, 
+  #   {$sort: {count: 1}}, 
+  #   {$match: {createdAt > (new Date()).getTime() - 60*1000}})]
   Rooms.find({})
 
 
