@@ -3,6 +3,7 @@ Template.roomCreate.error = -> Session.get 'roomCreateError'
 Template.roomCreate.events =
   'click input.add': (e, t) ->
     input = $(t.find("#roomCreateName"))
+
     user_long = ''
     user_lat = ''
 
@@ -26,7 +27,3 @@ Template.roomCreate.events =
       Meteor.call 'createRoom', data, (err, data) ->
         if ! err? then console.log(data) else console.log(err)
         router.navigate('rooms/' + data)
-
-
-
-

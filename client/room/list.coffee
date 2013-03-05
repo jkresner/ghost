@@ -11,7 +11,6 @@ setRoomsListRooms = ->
 
     #db.test.find({$where: "sum(this.x, this.y) == 6"});
 
-
   noLocation = ->
     console.log("no location found")
     Session.set 'roomsListRooms', Rooms.find().fetch() #most popular
@@ -31,11 +30,4 @@ distance = (lat1, lon1, lat2, lon2) ->
   dist = dist * 60 * 1.1515
   dist
 
-Template.roomList.avatarName  = ->
-  user = Meteor.user()
-  getUserAvatar(user).name
-
-Template.roomList.avatarUrl = ->
-  user = Meteor.user()
-  getUserAvatar(user).name
-
+Template.roomList.avatar  = -> Session.get 'avatar'

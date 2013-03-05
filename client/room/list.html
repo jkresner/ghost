@@ -3,10 +3,14 @@
       <li><a href="#new-room">Create Room</a></li>
     </ul>
 
+    {{#if avatar}}
+
     <div id="your-avatar">
-      <h3>{{avatarName}}</h3>
-      <img src="{{avatarUrl}}"/>
+      <h3>{{avatar.name}}</h3>
+      <img src="{{avatar.img}}"/>
     </div>
+
+    {{/if }}
 
     <ul>
       {{#each rooms}}
