@@ -16,7 +16,7 @@ Template.roomCreate.events =
       data.lon = user_lon
       data.lat = user_lat
 
-      Meteor.call 'createRoom', data, (err, data) ->
+      Meteor.call 'createRoom', data, { wait: false } ,(err, data) ->
 
         button.prop "disabled", true
 

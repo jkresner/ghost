@@ -1,6 +1,10 @@
 <template name="userDetail">
   {{#if currentUser}}
-    {{currentUser.profile.facebook.name}}
+    <div style="text-align:center">
+      <h2>{{currentUser.profile.facebook.name}}</h2>
+    </div>
+    {{> avatarDetail }}
+
   {{else}}
     <div class="flash">{{Session.flash}}</div>
     <h1>Sign in to save your avatar</h2>

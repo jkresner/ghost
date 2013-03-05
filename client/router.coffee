@@ -32,11 +32,11 @@ class GhostRouter extends Backbone.Router
     if oldAvatarId isnt avatarId
       Session.set "avatarId", avatarId
 
-  messageDetail: () ->
+  messageDetail: (messageId) ->
     @showPage 'messageDetail'
-    userId = Session.get "userId"
-    if oldUser isnt userdId
-      Session.set "userId", userId
+    if messageId isnt Session.get("messageId")
+      $log 'messageDetail.settingSession', messageId
+      Session.set "messageId", messageId
 
   # Magic that displays the div with an ID named after the route
   showPage: (pageId) ->
