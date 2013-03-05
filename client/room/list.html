@@ -1,14 +1,7 @@
 <template name="roomList">
-
     {{#if avatar}}
-
-    <div id="your-avatar">
-      <h3>{{avatar.name}}</h3>
-      <img src="{{avatar.img}}"/>
-    </div>
-
+      {{> avatarDetail }}
     {{/if }}
-
     <ul>
       {{#each rooms}}
         <li><a href="#rooms/{{_id}}">{{name}}

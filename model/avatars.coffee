@@ -14,6 +14,32 @@ Avatars.allow
   remove: (userId, msgs) ->
     Meteor.users.findOne({id: userId}).admin ? true : false
 
+avatars = [
+  'av1.png',
+  'av10.png',
+  'av11.png',
+  'av12.png',
+  'av13.png',
+  'av14.png',
+  'av15.png',
+  'av16.png',
+  'av17.png',
+  'av18.png',
+  'av19.png',
+  'av2.png',
+  'av20.png',
+  'av21.png',
+  'av22.png',
+  'av23.png',
+  'av24.png',
+  'av25.png',
+  'av3.png',
+  'av4.png',
+  'av5.png',
+  'av6.png',
+  'av7.png',
+  'av8.png',
+  'av9.png' ]
 
 avatarFirstNames = [
   'sexy', 'burnt', 'happy'
@@ -45,7 +71,7 @@ avatarExpired = (avatar) ->
 generateAvatar = (user) ->
   avatar =
     date: new Date()
-    img: Random.choice Session.get('avatar_images')
+    img: Random.choice avatars # TODO: FIX THIS Session.get('avatar_images')
     name: Random.choice(avatarFirstNames) + Random.choice(avatarLastNames)
     userId: user._id if user?
   id = Avatars.insert avatar

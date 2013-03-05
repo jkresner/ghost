@@ -12,8 +12,9 @@ Meteor.autorun ->
 
 Meteor.startup ->
   Session.set 'loc', '?'
-  Meteor.call 'getAvatarImages', (err, avatar_images) ->
-    Session.set 'avatar_images', avatar_images
+  # TOOD: Fix this shit
+  #  Meteor.call 'getAvatarImages', (err, avatar_images) ->
+  #    Session.set 'avatar_images', avatar_images
 
   $ ->
     window.router = new GhostRouter()
