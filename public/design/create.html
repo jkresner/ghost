@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="Anonymous Event-Based Mobile Chat. ">
+<meta name="keywords" content="chat, anonymous">
+<meta charset="UTF - 8">
+<meta name="copyright Ghost Post" content="2013">
+
+<title>Ghost Post</title>
+
+<link rel="stylesheet" href="css/screen.css" media="screen, projection">
+<!--<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>-->
+<link rel="shortcut icon" href="images/favicon.ico" type="image/ico" />
+<script type="text/javascript" src="js/prefixfree.js"></script>
+<script type="text/javascript" src="js/modernizr-2.0.6.js"></script>
+<meta name = "viewport" content = "initial-scale=1.0, width=device-width" />
+
+</head>
+
+<body>
+    <nav>
+        <a href="index.html"><img src = "images/logo.png"></a>
+    </nav>
+    <div class = "button">
+        <div class = "new-post"><a href = "index.html">cancel</a></div>
+    </div>
+    <div class = "main">
+        <form class = "create-group cf">
+            <h2>name your group</h2>
+            <input type = "textinput" placeholder = "event, group name, or topic">
+            <h2>public or private?</h2>
+            <h3><span>private groups can only be found by people with the link</span></h3>
+            <input type = "radio" name = "privacy" value = "public" class = "radio" checked></input>
+            <h3 class = "radio-label">public</h3>
+            <input type = "radio" name = "privacy" value = "private" class = "radio"></input>
+            <h3 class = "radio-label">private</h3>
+            <h2>add a location (optional)</h2>
+            <input type = "textinput" placeholder = "venue name">
+            <button class='large-button'>add current GPS location</button>
+            <h3><span>restrict group access to 1 mile from this location?</span></h3>
+            <input type = "radio" name = "privacy" value = "no" class = "radio" checked></input>
+            <h3 class = "radio-label">no</h3>
+            <input type = "radio" name = "privacy" value = "yes" class = "radio"></input>
+            <h3 class = "radio-label">yes</h3>
+            <button class='large-button large-submit'>create</button>
+        </div>
+    </div>
+</body>
+</html>
