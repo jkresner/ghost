@@ -3,6 +3,17 @@ geo =
     if Modernizr.geolocation
       navigator.geolocation.getCurrentPosition foundLocCallback, noLocCallback
 
+  setUserLocation: ->
+
+    cacheNothing = ->
+      $log 'User has no GeoLocation. Not setting up Session(userLoc)'
+
+    cacheGeoLocation = (l) ->
+      Session.set 'userLoc', [ l.coords.longitude , l.coords.latitude ]
+      $log 'Storing Session(userLoc)', Session.get('userLoc')
+
+    geo.getGeoLocation(cacheGeoLocation, cacheNothing)
+
 
 distance = (lon1, lat1, lon2, lat2) ->
   radlat1 = Math.PI * lat1 / 180
@@ -16,3 +27,5 @@ distance = (lon1, lat1, lon2, lat2) ->
   dist = dist * 180 / Math.PI
   dist = dist * 60 * 1.1515
   dist
+
+

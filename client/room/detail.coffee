@@ -7,6 +7,17 @@ Template.roomDetail.messages = ->
   Messages.find {}, { sort: { createdAt: -1 } }
 
 
+Template.roomDetail.distanceFromUser = ->
+  roomLoc = @loc
+  userLoc = Session.get('userLoc')
+  $log 'roomLoc', roomLoc, '@loc', @loc
+
+  if roomLoc
+    if Session.get('userLoc')
+      $log 'Distance of room ', @name , ' from user: ', Math.round( distance( roomLoc[0], roomLoc[1], userLoc[0], userLoc[1] ) *100 ) / 100 + " mi away - "
+      ( Math.round( distance( roomLoc[0], roomLoc[1], userLoc[0], userLoc[1] ) *100 ) / 100 ) + " mi away - "
+
+
 placeVote = (elt, value) ->
   elt.parent().find('.voteUp').prop('disabled', false)
   elt.parent().find('.voteDown').prop('disabled', false)

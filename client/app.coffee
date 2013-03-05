@@ -38,6 +38,7 @@ Meteor.autorun ->
 
 
 Meteor.startup ->
+  geo.setUserLocation()
 
   $ ->
     window.router = new GhostRouter()
