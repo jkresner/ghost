@@ -2,3 +2,6 @@
 .tab {
   display: none;
 }
+#share-dialog {
+  padding-left: 40%;
+}

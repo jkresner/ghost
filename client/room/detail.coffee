@@ -47,13 +47,20 @@ Template.roomDetail.events =
 
   'click .share a': (evt) ->
     elt = $(evt.currentTarget)
-    messageId: elt.data('messageid') # Yes, lower case, it's retarded
+    messageId = elt.data('messageid') # Yes, lower case, it's retarded
     router.navigate 'message/' + messageId
+    console.log("OPENING DIALOG")
     # $('#share-dialog').dialog('close')
     $('#share-dialog').dialog
       modal: true
-      position: { my: "center", at: "center", of: window }
-      resizable: false
+      autoOpen: false
+      #position: { my: "top center", at: "top center", of: window }
+      #height: $(window).height* 0.9
+      #width: $(window).width * 0.6
+      #resizable: false
       title: "Where to share?"
       draggable: false
-      closeText: "Cancel"
+      closeText: "Close"
+      #appendTo: "body"
+      #$('.ui-dialog').css("top: 0;")
+    $('#share-dialog').dialog('open')
