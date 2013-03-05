@@ -1,6 +1,11 @@
+fs = __meteor_bootstrap__.require 'fs'
+
 Meteor.startup ->
   console.log 'ghost server startup'
 
+Meteor.avatars =
+  _.map _.reject(fs.readdirSync('public/images/avatars'), (file) -> file == '.DS_Store'), (file) ->
+      '/images/' + file
 
 # Dev application
 

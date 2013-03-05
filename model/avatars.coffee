@@ -18,13 +18,6 @@ Avatars.allow
   remove: (userId, msgs) ->
     Meteor.users.findOne({id: userId}).admin ? true : false
 
-avatars = [
-  'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-snc7/369183_760029419_1091666087_q.jpg',
-  'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/203382_644546930_6239777_q.jpg',
-  'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/369293_717403528_90769369_q.jpg',
-  'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/371736_14900312_1992773374_q.jpg',
-  'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash4/371812_7941262_2097571294_q.jpg'
-]
 
 avatarFirstNames = [
   'sexy', 'burnt', 'happy'
@@ -56,7 +49,7 @@ avatarExpired = (avatar) ->
 generateAvatar = (user) ->
   avatar =
     date: new Date()
-    img: Random.choice(avatars)
+    img: Random.choice(Meteor.avatars)
     name: Random.choice(avatarFirstNames) + Random.choice(avatarLastNames)
     userId: user._id if user?
   id = Avatars.insert avatar
