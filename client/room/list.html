@@ -3,14 +3,20 @@
     {{#if avatar}}
       {{> avatarDetail }}
     {{/if }}
-    <ul>
-      {{#each rooms}}
-        <li><a href="#rooms/{{_id}}">{{name}}
-          {{#if hasLocation }}
-            - {{ getDistanceToUser }}
-          {{/if}}
+    <div class="list">
+      <ul class="posts">
+        <li class="cf">
+          <ul>
+            {{#each rooms}}
+              <li><a href="#rooms/{{_id}}">{{name}}
+                {{#if hasLocation }}
+                  - {{ getDistanceToUser }}
+                {{/if}}
+              </li>
+            {{/each}}
+          </ul>
         </li>
-      {{/each}}
-    </ul>
+      </ul>
+    </div>
   </div>
 </template>
