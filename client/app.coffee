@@ -17,13 +17,14 @@ Meteor.autorun ->
     Meteor.subscribe 'rooms', lat, lon, setCurrentRoom
 
   geoRoomSubcribe = (l) ->
+    $log 'geoRoomSubcribe', l
     roomSubcribe l.coords.latitude, l.coords.longitude
 
 
   geo.getGeoLocation(geoRoomSubcribe, roomSubcribe)
 
 
-  Meteor.subscribe 'room_threads', roomId, ->
+  Meteor.subscribe 'room_messages', roomId, ->
 
 
 

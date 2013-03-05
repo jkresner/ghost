@@ -4,9 +4,7 @@ Template.roomDetail.room = -> Session.get 'room'
 
 
 Template.roomDetail.messages = ->
-  if ! Session.get('room')? then return []
-  roomId = Session.get('room')._id
-  Messages.find roomId: roomId, { sort: { createdAt: -1 } }
+  Messages.find {}, { sort: { createdAt: -1 } }
 
 
 placeVote = (elt, value) ->
@@ -21,27 +19,22 @@ placeVote = (elt, value) ->
 
 
 Template.roomDetail.events =
-  'submit #thread-post': (evt) ->
-    form = $('#thread-post')
-    data = form.serializeObject()
-    message =
-      roomId: Session.get('roomId')
-      text: data.text
-      user: Meteor.userId()
-      avatar: Session.get('avatar')
-    Meteor.call 'createMessage', message
-    evt.stopPropagation()
-    evt.preventDefault()
-    form[0].reset()
-    false
+  'click #postMessage': (e, t) ->
 
-  'click .voteUp': (evt) ->
-    elt = $(evt.currentTarget)
+    data =
+      roomId: Session.get('roomId')
+      text: t.find('#postText').value
+      avatar: Session.get('avatar')
+
+    Meteor.call 'createMessage', data
+
+  'click .voteUp': (e) ->
+    elt = $(e.currentTarget)
     placeVote(elt, 1)
     elt.prop('disabled', true)
 
-  'click .voteDown': (evt) ->
-    elt = $(evt.currentTarget)
+  'click .voteDown': (e) ->
+    elt = $(e.currentTarget)
     placeVote(elt, -1)
     elt.prop('disabled', true)
 

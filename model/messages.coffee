@@ -9,7 +9,7 @@ Messages = new Meteor.Collection 'messages'
 Messages.allow
   insert: (userId, msg) -> false
   update: (userId, messages, fieldNames, mods) -> false
-  remove: (userId, msgs) -> 
+  remove: (userId, msgs) ->
     Meteor.users.findOne({id: userId}).admin ? true : false
 
 
@@ -18,17 +18,17 @@ Meteor.methods
     d = data || {}
 
     if (! (typeof d.text is "string" && d.text.length) )
-      console.log 'required param missing'
+      console.log 'required text param missing', d
       throw new Meteor.Error 400, 'Required parameter missing'
 
     if d.text.length > 200 then throw new Meteor.Error 413, "Text too long"
 
-    if !@userId then throw new Meteor.Error 403, "You must be logged in"
+    # if !@userId then throw new Meteor.Error 403, "You must be logged in"
 
-    if not data.roomId
-      throw new Meteor.Error 403, "You must be logged in"
+    if ! d.roomId?
+      throw new Meteor.Error 403, "You must post message to a room"
 
-    data.userId = @userId
-    user = Meteor.users.findOne(@userId)
+    #data.userId = @userId
+    #user = Meteor.users.findOne(@userId)
     data.createdAt = (new Date).getTime()
     Messages.insert data

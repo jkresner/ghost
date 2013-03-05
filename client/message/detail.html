@@ -1,16 +1,18 @@
 <template name="messageDetail">
-<div id="message-{{_id}}" class="message">
-  <div class="user">
-    <span class="avatar"><img src="{{avatar.img}}"/></span>
-    <span class="name">{{avatar.name}}</span>
+
+<li id="message-{{_id}}" class="message" class="cf">
+  <h2 class="right-text span25 fR">{{score}} <img src="images/ghost-icon.png"></h2>
+  <img class="avatar-small fL" src="images/avatars/{{avatar.img}}">
+  <h2>{{avatar.name}}</h2>
+  <div class="span100 fL">
+      <p>{{text}}<span class="date"> {{createdAt}}</span></p>
+      <ul class="social cf">
+          <li><a href="javascript://" data-messageid="{{_id}}" class="voteUp"><img src="images/yay.png"></a></li>
+          <li><a href="javascript://" data-messageid="{{_id}}" class="voteDown"><img src="images/boo.png"></a></li>
+          <li><a href="javascript://" data-messageid="{{_id}}" class="contact">contact</a></li>
+          <li><a href="javascript://" data-messageid="{{_id}}" class="share"><img src="images/share.png"></a></li>
+      </ul>
   </div>
-  <div class="text">{{text}}</div>
-  <div class="score">{{score}}</div>
-  <ul class="messageControl">
-    <li><a href="javascript://" data-messageid="{{_id}}" class="voteUp">Up</a></li>
-    <li><a href="javascript://" data-messageid="{{_id}}" class="voteDown">Down</a></li>
-    <li><a href="javascript://" data-messageid="{{_id}}" class="contact">Contact</a></li>
-  </ul>
-  <div><span class="share"><a data-messageid="{{_id}}" href="javascript://">Share!</a></span><span class="timestamp">Posted at {{createdAt}}</span></div>
-</div>
+</li>
+
 </template>

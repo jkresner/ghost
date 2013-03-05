@@ -1,73 +1,30 @@
 <template name="roomList">
 
-<div class="list">
-  <ul class="posts">
-    <li class="cf">
-
   {{> avatarDetail }}
 
-    <ul id="room-tabs">
-      <li><a data-tab="nearby-rooms" href="javascript://">Nearby</a></li>
-      <li><a data-tab="popular-rooms" href="javascript://">Popular</a></li>
-      <li><a data-tab="my-rooms" href="javascript://">Mine</a></li>
-    </ul>
+<div class="list">
+  <ul class="toggle">
+    <li><a data-tab="nearby-rooms" href="javascript://">Nearby</a></li>
+    <li><a data-tab="popular-rooms" href="javascript://">Popular</a></li>
+    <li><a data-tab="my-rooms" href="javascript://">Mine</a></li>
+  </ul>
 
-    <div id="room-tab-content">
-      <div class="list">
-        <ul class="posts">
-          <li class="cf">
-            <ul id="nearby-rooms" class="tab" style="display: block;">
-              "nearby"
-              {{#each rooms}}
-                <li><a href="#room/{{_id}}">{{name}}
-                  {{#if hasLocation }}
-                    - {{ getDistanceToUser }}
-                  {{/if}}
-                </li>
-              {{/each}}
-            </ul>
-          </li>
-        </ul>
-      </div>
+  <ul class="event">
+    {{#each rooms}}
 
-      <div class="list">
-        <ul class="posts">
-          <li class="cf">
-            <ul id="popular-rooms" class="tab">
-              "popular"
-              {{#each popularRooms}}
-                <li><a href="#room/{{_id}}">{{name}}
-                  {{#if loc}}
-                    , {{loc}}
-                  {{/if}}
-                </li>
-              {{/each}}
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <div class="list">
-        <ul class="posts">
-          <li class="cf">
-            <ul id="my-rooms" class="tab">
-              "my"
-              {{#each myRooms}}
-                <li><a href="#room/{{_id}}">{{name}}
-                  {{#if loc}}
-                    , {{loc}}
-                  {{/if}}
-                </li>
-              {{/each}}
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
+      <li class="cf">
+         <a href="#room/{{ _id }}">
+          <div class="event-title span75 fL">
+              <h2>{{ name }}</h2>
+          </div>
+          <h2 class="right-text span25 fR">43<img src="images/ghost-icon.png"></h2>
+          <div class="top-post fL">
+              <p>"Help, I'm {{ name }}{{ name }} in the bathroom!"<span class="date"> 4 hours ago</span></p>
+          </div>
+        </a>
       </li>
-    </ul>
-  </div>
+
+    {{/each}}
+  </ul>
 
 </template>

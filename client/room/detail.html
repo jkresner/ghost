@@ -10,31 +10,19 @@
 
 {{/with}}
 
+<a href="#">Back to list</a>
+
 {{#if room}}
 
-  {{! <div class="list">
+  <div class="list">
     <ul class="posts">
-      <li class="cf">
-        <ul>
-          <a href="#">Back to list</a>
-
-          roomDetail
-          <div id="room-{{info}}" class="room">
-          <form id="thread-post" method="POST">
-            <input name="text" type="text" placeholder="POST. What are you afraid of?" size="64"/>
-            <button type="submit">BOO(M)</button>
-          </form>
-          <h1>{{name}}</h1>
-          <div id="messages">
-            {{#each messages}}
-              {{> messageDetail }}
-            {{/each}}
-          </div>
-        </ul>
-      </li>
+      {{#each messages}}
+        {{> messageDetail }}
+      {{/each}}
     </ul>
-  </div> }}
+  </div>
 
+  {{! <div id="room-{{info}" class="room"> }}
 
 {{/if}}
 
@@ -51,4 +39,10 @@
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-513590d17908f55d"></script>
     <!-- AddThis Button END -->
   </div>
+
+  <div class="chat-entry">
+    <input id="postText" placeholder="what do you want really want to say?" style="text">
+    <button id="postMessage" style="submit">post</button>
+  </div>
+
 </template>
