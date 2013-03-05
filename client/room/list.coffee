@@ -7,7 +7,9 @@ setRoomsListRooms = ->
     # Session.set('loc','lat: '+location.coords.latitude+', lan: '+ location.coords.longitude);
     console.log('Looking for rooms close to lat: ' + location.coords.latitude = ' lon: '+ location.coords.longitude)
     alert 'Looking for rooms close to lat: ' + location.coords.latitude + '   long: '+ location.coords.longitude
-    Session.set 'roomsListRooms', Rooms.find().fetch() #closeby
+    Session.set 'roomsListRooms', Rooms.find({$sort: "distance(this.lat, location.coords.latitude,  this.long, location.coords.latitude)" : 1}).fetch() #closeby
+
+    #db.test.find({$where: "sum(this.x, this.y) == 6"});
 
 
   noLocation = ->

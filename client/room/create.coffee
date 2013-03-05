@@ -19,8 +19,7 @@ Template.roomCreate.events =
       data =
         name: input.val()
         ispublic: true
-        long: user_long
-        lat: user_lat
+        loc: [user_long, user_lat]
 
       input.val('')
 
