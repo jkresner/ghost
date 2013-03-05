@@ -12,7 +12,7 @@ placeVote = (elt, value) ->
   elt.parent().find('.voteDown').prop('disabled', false)
   vote =
     messageId: elt.data('messageid') # Yes, lower case, it's retarded
-    userId: getUser()._id
+    userId: getUserId()
     value: value
     avatarId: Session.get('avatar')._id # TODO: this should be set in the session for persisted avatars
   Meteor.call 'createVote', vote

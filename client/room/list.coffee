@@ -46,6 +46,7 @@ Template.roomList.getDistanceToUser = ->
 
 Template.roomList.events
   'click #room-tabs a': (evt) ->
+    debugger
     elt = $(evt.currentTarget)
     $('#room-tab-content .tab').hide()
     $('#' + elt.data('tab')).show()

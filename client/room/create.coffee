@@ -4,7 +4,7 @@ Template.roomCreate.error = -> Session.get 'roomCreateError'
 
 Template.roomCreate.events =
   'click button.add': (e, t) ->
-
+    console.log("HERE")
     data =
       name: t.find("#roomName").value
       ispublic: t.find("#rb_public").checked
@@ -21,6 +21,5 @@ Template.roomCreate.events =
 
     foundLocation = (loc) ->
       sendCreate loc.coords.longitude, loc.coords.latitude
-
 
     geo.getGeoLocation foundLocation, sendCreate
