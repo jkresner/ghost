@@ -4,6 +4,7 @@ class GhostRouter extends Backbone.Router
     "": "roomList"
     "new-room": "roomCreate"
     "room/:roomId": "roomDetail"
+    "messages/:messageId": "messageDetail"
     "avatar/:avatarId": "avatarDetail"
 
   initialize: ->
@@ -20,8 +21,14 @@ class GhostRouter extends Backbone.Router
   roomCreate: () ->
     @showPage 'roomCreate'
 
-  userDetail: (userId) ->  # User page
-    @showPage 'userDetail'
+  avatarDetail: (avatarId) ->  # User page
+    @showPage 'avatarDetail'
+    oldAvatarId= Session.get "avatarId"
+    if oldAvatarId isnt avatarId
+      Session.set "avatarId", avatarId
+
+  messageDetail: () ->
+    @showPage 'messageDetail'
     userId = Session.get "userId"
     if oldUser isnt userdId
       Session.set "userId", userId
