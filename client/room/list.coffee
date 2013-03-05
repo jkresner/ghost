@@ -1,5 +1,5 @@
 Template.roomList.popularRooms = ->
-  Rooms.find({})
+  Rooms.find {score: {$gt: 0}}, {sort: {score: -1}}
 
 
 Template.roomList.myRooms = ->

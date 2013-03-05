@@ -30,21 +30,15 @@ Meteor.methods
     conditions = {messageId: data.messageId, userId: data.userId}
     message = Messages.findOne(data.messageId)
     score = message.score || 0
-    console.log(data)
-    console.log("Old score " + score)
+    data.roomId = message.roomId
     data.createdAt = (new Date()).getTime()
     vote = Votes.findOne(conditions)
     if vote
-      console.log("Vote: " + vote)
       Votes.update(conditions, data)
       score -= vote.value
-      console.log("score after subtracting vote " + score);
     else
       vote = Votes.insert data
     score += d.value
-    console.log("New score " + score)
     message = _.extend(message, {score: score})
-    console.log("New Message data")
-    console.log(message)
     Messages.update({_id: message._id}, message)
     vote

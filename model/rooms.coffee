@@ -48,4 +48,4 @@ Meteor.methods
     if d.long? && d.lat?
       roomData.loc = [d.long, d.lat]
 
-    gooms.insert roomData
+    Rooms.insert roomData
