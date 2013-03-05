@@ -10,7 +10,7 @@ Template.roomCreate.events =
       sendCreate location.coords.longitude, location.coords.latitude
     noLocation = ->
       console.log("Room " + input.val() + " created without location")
-      sendCreate '', ''
+      sendCreate()
 
     getGeoLocation(Meteor.user, foundLocation, noLocation)
 

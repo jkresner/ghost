@@ -8,7 +8,10 @@ setRoomsListRooms = ->
   foundLocation = (location) ->
     # Session.set('loc','lat: '+location.coords.latitude+', lan: '+ location.coords.longitude);
     console.log('Looking for rooms close to lat: ' + location.coords.latitude = ' lon: '+ location.coords.longitude)
-    Session.set 'roomsListRooms', Rooms.find({ loc: { $within: { $centerSphere: [ [ location.coords.longitude, location.coords.latitude] , 10 / 3963.192] } } }).fetch()
+    # once we use MongoDB that support geospatial operations:     rooms = Rooms.find({ loc: { $near: [ location.coords.longitude, location.coords.latitude ] } }).fetch()
+    Session.set 'userLoc', [location.coords.longitude, location.coords.latitude]
+    rooms = Rooms.find().fetch()
+    Session.set 'roomsListRooms', rooms
 
   noLocation = ->
     console.log("no location found")
@@ -17,7 +20,7 @@ setRoomsListRooms = ->
 
   getGeoLocation(Meteor.user, foundLocation, noLocation)
 
-distance = (lat1, lon1, lat2, lon2) ->
+distance = (lon1, lat1, lon2, lat2) ->
   radlat1 = Math.PI * lat1 / 180
   radlat2 = Math.PI * lat2 / 180
   radlon1 = Math.PI * lon1 / 180
@@ -31,3 +34,21 @@ distance = (lat1, lon1, lat2, lon2) ->
   dist
 
 Template.roomList.avatar  = -> Session.get 'avatar'
+
+Template.roomList.hasLocation = ->
+  if @loc
+    if @loc[1] != null
+      if @loc[1] > 0
+        return true
+      else
+        return false
+    else
+      return false
+  else
+    return false
+
+Template.roomList.getDistanceToUser = ->
+  if Session.get 'userLoc'
+    userLoc = Session.get 'userLoc'
+    (Math.round(distance(@loc[0],@loc[1],userLoc[0], userLoc[1])*100)/100) + " miles away"
+

@@ -15,8 +15,8 @@
     <ul>
       {{#each rooms}}
         <li><a href="#rooms/{{_id}}">{{name}}
-          {{#if loc}}
-            , {{loc}}
+          {{#if hasLocation }}
+            - {{ getDistanceToUser }}
           {{/if}}
         </li>
       {{/each}}

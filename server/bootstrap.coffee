@@ -1,6 +1,7 @@
 Meteor.startup ->
   console.log 'ghost server startup'
 
+Rooms._ensureIndex({ loc : "2d" });
 
 # Dev application
 
