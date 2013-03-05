@@ -26,14 +26,14 @@ Meteor.autorun ->
     $log 'roomSubscribe', lat, lon
     Meteor.subscribe 'rooms', lat, lon, setCurrentRoom
 
-  geoRoomSubscribe = (l) ->
-    $log 'geoRoomSubscribe', l
-    roomSubscribe l.coords.latitude, l.coords.longitude
+  #geoRoomSubscribe = (l) ->
+  #  $log 'geoRoomSubscribe', l
+  #  roomSubscribe l.coords.latitude, l.coords.longitude
 
-  noLocation = -> console.log('not location')
+  #geo.getGeoLocation(geoRoomSubscribe)
 
-  geo.getGeoLocation(geoRoomSubscribe, roomSubscribe)
-
+  # we assume geo location is going to fail
+  roomSubscribe(null, null)
 
   Meteor.subscribe 'room_messages', roomId, ->
 

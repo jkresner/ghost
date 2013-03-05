@@ -7,15 +7,15 @@ geo =
 
   # setUserLocation: ->
 
-  #   cacheNothing = ->
-  #     alert ("You don't share your location with GhostPost? What a DOUCHE MOVE!")
-  #     $log 'User has no GeoLocation. Not setting up Session(userLoc)'
+  # #   cacheNothing = ->
+  # #     alert ("You don't share your location with GhostPost? What a DOUCHE MOVE!")
+  # #     $log 'User has no GeoLocation. Not setting up Session(userLoc)'
 
-  #   cacheGeoLocation = (l) ->
-  #     Session.set 'userLoc', [ l.coords.longitude , l.coords.latitude ]
-  #     $log 'Storing Session(userLoc)', Session.get('userLoc')
+  # #   cacheGeoLocation = (l) ->
+  # #     Session.set 'userLoc', [ l.coords.longitude , l.coords.latitude ]
+  # #     $log 'Storing Session(userLoc)', Session.get('userLoc')
 
-  #   geo.getGeoLocation(cacheGeoLocation, cacheNothing)
+  # #   geo.getGeoLocation(cacheGeoLocation, cacheNothing)
 
 
   distance: (lon1, lat1, lon2, lat2) ->

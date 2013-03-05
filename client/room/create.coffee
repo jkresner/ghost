@@ -10,20 +10,19 @@ Template.roomCreate.events =
       name: t.find("#roomName").value
       ispublic: t.find("#rb_public").checked
 
-    sendCreate = (user_long, user_lat) ->
-      data.long = user_long
+    sendCreate = (user_lon, user_lat) ->
+
+      data.lon = user_lon
       data.lat = user_lat
       $log 'sendingCreateRoom', data
 
       Meteor.call 'createRoom', data, (err, data) ->
-        console.log("send create")
         if ! err? then console.log('createRoom.success',data) else console.log(err)
         router.navigate "room/#{data}", { trigger: true }
         button.prop "disabled", true
         $(t.find("#roomName")).val('')
 
-    foundLocation = (loc) ->
-      $log 'found loc'
-      sendCreate loc.coords.longitude, loc.coords.latitude
-    $log 'get geo'
-    geo.getGeoLocation foundLocation, sendCreate, {timeout: 8000}
+    #foundLocation = (loc) ->
+    # sendCreate loc.coords.longitude, loc.coords.latitude
+    # geo.getGeoLocation foundLocation, sendCreate, {timeout: 8000}
+    sendCreate()
