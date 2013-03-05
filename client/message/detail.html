@@ -1,10 +1,16 @@
 <template name="messageDetail">
-<div id="message-{{id}}" class="message">
+<div id="message-{{_id}}" class="message">
   <div class="user">
     <span class="avatar"><img src="{{avatarUrl}}"/></span>
     <span class="name">{{user.name}}</span>
   </div>
-  <div>{{text}}</div>
-  <div><span class="timestamp">Posted at {{created_at}}</div>
+  <div class="text">{{text}}</div>
+  <div class="score">{{score}}</div>
+  <ul class="messageControl">
+    <li><a href="javascript://" data-messageid="{{_id}}" class="voteUp">Up</a></li>
+    <li><a href="javascript://" data-messageid="{{_id}}" class="voteDown">Down</a></li>
+    <li><a href="javascript://" data-messageid="{{_id}}" class="contact">Contact</a></li>
+  </ul>
+  <div><span class="timestamp">Posted at {{createdAt}}</div>
 </div>
 </template>
