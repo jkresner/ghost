@@ -8,9 +8,7 @@ Meteor.publish 'rooms', (lat,lon) ->
 
 
   else
-    console.log 'publish.rooms without location lat:', lat, ' lon: ', lon
-    console.log Rooms.find().fetch()
-    Rooms.find()
+    console.log 'Not submitting near rooms due to lack of User geoLocation'
 
   #Rooms.find()
   #Rooms.find loc : { $within : { $box : box } }
