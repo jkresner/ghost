@@ -23,17 +23,9 @@
     <div class="list">
       <ul class="posts">
         <li class="cf">
-          <div id="roomCreate" class="page">
-              {{> roomCreate }}
-          </div>
-
-          <div id="roomList" class="page">
-              {{> roomList }}
-          </div>
-
-          <div id="roomDetail" class="page">
-              {{> roomDetail}}
-          </div>
+          {{> roomCreate }}
+          {{> roomList }}
+          {{> roomDetail}}
 
           {{else}}
           {{> homeExternal}}

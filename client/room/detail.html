@@ -1,8 +1,9 @@
 <template name="roomDetail">
-  <a href="#">Back to list</a>
+  <div id="roomDetail" class="page">
+    <a href="#">Back to list</a>
 
-  roomDetail
-  <div id="room-{{info}}" class="room">
+    roomDetail
+    <div id="room-{{info}}" class="room">
     <form id="thread-post" method="POST">
       <input name="text" type="text" placeholder="POST. What are you afraid of?" size="64"/>
       <button type="submit">BOO(M)</button>
@@ -13,5 +14,5 @@
         {{> messageDetail }}
       {{/each}}
     </div>
-
+  </div>
 </template>
