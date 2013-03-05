@@ -14,32 +14,15 @@ Avatars.allow
   remove: (userId, msgs) ->
     Meteor.users.findOne({id: userId}).admin ? true : false
 
-avatars = [
-  'av1.png',
-  'av10.png',
-  'av11.png',
-  'av12.png',
-  'av13.png',
-  'av14.png',
-  'av15.png',
-  'av16.png',
-  'av17.png',
-  'av18.png',
-  'av19.png',
-  'av2.png',
-  'av20.png',
-  'av21.png',
-  'av22.png',
-  'av23.png',
-  'av24.png',
-  'av25.png',
-  'av3.png',
-  'av4.png',
-  'av5.png',
-  'av6.png',
-  'av7.png',
-  'av8.png',
-  'av9.png' ]
+# commented out because it was taking the app 20 seconds to reload on each change
+# fs = __meteor_bootstrap__.require 'fs'
+# Meteor.avatarImages =
+#  _.map _.reject(fs.readdirSync('public/images/avatars'), (file) -> file == '.DS_Store'), (file) ->
+#      '/images/avatars/' + file
+
+avatars = []
+for i in [1..25]
+  avatars.push "av#{i}.png"
 
 avatarFirstNames = [
   'sexy', 'burnt', 'happy'

@@ -1,22 +1,24 @@
 # TODO: paginate shit
 
-Template.roomDetail.info = -> Session.get 'roomId'
+Template.roomDetail.room = -> Session.get 'room'
+
 
 Template.roomDetail.messages = ->
-  if not Session.get('roomId')
-    return []
-  msgs = Messages.find({roomId: Session.get('roomId')}, {sort: {createdAt: -1}})
-  msgs
+  if ! Session.get('room')? then return []
+  roomId = Session.get('room')._id
+  Messages.find roomId: roomId, { sort: { createdAt: -1 } }
+
 
 placeVote = (elt, value) ->
   elt.parent().find('.voteUp').prop('disabled', false)
   elt.parent().find('.voteDown').prop('disabled', false)
-  vote = 
+  vote =
     messageId: elt.data('messageid') # Yes, lower case, it's retarded
     userId: getUser()._id
     value: value
     avatarId: Session.get('avatar')._id # TODO: this should be set in the session for persisted avatars
   Meteor.call 'createVote', vote
+
 
 Template.roomDetail.events =
   'submit #thread-post': (evt) ->

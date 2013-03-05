@@ -14,8 +14,7 @@ class GhostRouter extends Backbone.Router
 
   roomDetail: (roomId) ->  # list of threads
     @showPage 'roomDetail'
-    oldRoom = Session.get "roomId"
-    if oldRoom isnt roomId
+    if roomId isnt Session.get("roomId")
       Session.set "roomId", roomId
 
   roomCreate: () ->

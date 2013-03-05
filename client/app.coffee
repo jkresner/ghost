@@ -3,20 +3,32 @@ Accounts.ui.config
     facebook: ['email', 'user_events', 'user_groups', 'read_friendlists', 'publish_actions', ]
 
 
+
 Meteor.autorun ->
-  Meteor.subscribe 'rooms', setRoomsListRooms
-  Meteor.subscribe 'room_threads', Session.get('roomId')
-  #Meteor.subscribe 'user_avatars', Meteor.userId()
+
+  roomId = Session.get('roomId')
+
+  setCurrentRoom = ->
+    $log 'setCurrentRoom', roomId
+    if roomId? then Session.set 'room', Rooms.findOne(roomId)
+
+  roomSubcribe = (lat, lon) ->
+    $log 'roomSubcribe', lat, lon
+    Meteor.subscribe 'rooms', lat, lon, setCurrentRoom
+
+  geoRoomSubcribe = (l) ->
+    roomSubcribe l.coords.latitude, l.coords.longitude
+
+
+  geo.getGeoLocation(geoRoomSubcribe, roomSubcribe)
+
+
+  Meteor.subscribe 'room_threads', roomId, ->
+
 
 
 Meteor.startup ->
-  Session.set 'loc', '?'
-  # TOOD: Fix this shit
-  #  Meteor.call 'getAvatarImages', (err, avatar_images) ->
-  #    Session.set 'avatar_images', avatar_images
 
   $ ->
     window.router = new GhostRouter()
     Backbone.history.start pushState: false
-
-

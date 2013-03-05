@@ -1,32 +1,15 @@
 Template.roomList.popularRooms = ->
-  # TODO: this
   Rooms.find({})
+
 
 Template.roomList.myRooms = ->
   Rooms.find({owner: getUserId()})
 
+
 Template.roomList.rooms = ->
-  return [];
-  Session.get 'roomsListRooms'
+  Rooms.find().fetch()
+  #Session.get 'roomsListRooms'
 
-setRoomsListRooms = ->
-
-  console.log("setRoomsListRooms() is being executed")
-
-  foundLocation = (location) ->
-    # Session.set('loc','lat: '+location.coords.latitude+', lan: '+ location.coords.longitude);
-    console.log('Looking for rooms close to lat: ' + location.coords.latitude = ' lon: '+ location.coords.longitude)
-    # once we use MongoDB that support geospatial operations:     rooms = Rooms.find({ loc: { $near: [ location.coords.longitude, location.coords.latitude ] } }).fetch()
-    Session.set 'userLoc', [location.coords.longitude, location.coords.latitude]
-    rooms = Rooms.find().fetch()
-    Session.set 'roomsListRooms', rooms
-
-  noLocation = ->
-    console.log("no location found")
-    Session.set 'roomsListRooms', Rooms.find().fetch() #most popular
-    console.log("roomsListRooms", Rooms.find().fetch())
-
-  getGeoLocation(Meteor.user, foundLocation, noLocation)
 
 distance = (lon1, lat1, lon2, lat2) ->
   radlat1 = Math.PI * lat1 / 180
@@ -41,6 +24,7 @@ distance = (lon1, lat1, lon2, lat2) ->
   dist = dist * 60 * 1.1515
   dist
 
+
 Template.roomList.hasLocation = ->
   if @loc
     if @loc[1] != null
@@ -53,6 +37,7 @@ Template.roomList.hasLocation = ->
   else
     return false
 
+
 Template.roomList.getDistanceToUser = ->
   if Session.get 'userLoc'
     userLoc = Session.get 'userLoc'
@@ -64,4 +49,4 @@ Template.roomList.events
     elt = $(evt.currentTarget)
     $('#room-tab-content .tab').hide()
     $('#' + elt.data('tab')).show()
-    
+

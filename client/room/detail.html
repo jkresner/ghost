@@ -1,6 +1,18 @@
 <template name="roomDetail">
 
-  <div class="list">
+{{#with room}}
+
+<div class="avatar cf">
+  <h3><span>this is</span></h3>
+  <h1>{{name}}</h1>
+  <h3><span>43 ghosts</span><a href=""> share this room<img style="margin-bottom:-3px" src="images/share.png"></a></h3>
+</div>
+
+{{/with}}
+
+{{#if room}}
+
+  {{! <div class="list">
     <ul class="posts">
       <li class="cf">
         <ul>
@@ -21,6 +33,9 @@
         </ul>
       </li>
     </ul>
-  </div>
+  </div> }}
+
+
+{{/if}}
 
 </template>
