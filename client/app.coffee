@@ -21,7 +21,7 @@ Meteor.autorun ->
     roomSubcribe l.coords.latitude, l.coords.longitude
 
 
-  geo.getGeoLocation(geoRoomSubcribe, roomSubcribe)
+  geo.getGeoLocation(geoRoomSubcribe, roomSubcribe, {timeout: 8000})
 
 
   Meteor.subscribe 'room_messages', roomId, ->

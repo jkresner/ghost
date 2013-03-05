@@ -22,4 +22,4 @@ Template.roomCreate.events =
     foundLocation = (loc) ->
       sendCreate loc.coords.longitude, loc.coords.latitude
 
-    geo.getGeoLocation foundLocation, sendCreate
+    geo.getGeoLocation foundLocation, sendCreate, {timeout: 8000}

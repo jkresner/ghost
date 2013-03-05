@@ -17,7 +17,7 @@ Template.roomList.rooms = ->
     $log 'Caching GeoLocation of user at lon: ', l.coords.longitude , ' / lat: ', l.coords.latitude
     Session.set 'userLoc', [ l.coords.longitude , l.coords.latitude ]
 
-  geo.getGeoLocation(cacheGeoLocation, cacheNothing)
+  geo.getGeoLocation(cacheGeoLocation, cacheNothing, {timeout: 8000})
 
   Rooms.find().fetch()
   #Session.get 'roomsListRooms'
