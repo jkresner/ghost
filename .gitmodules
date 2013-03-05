@@ -1,0 +1,3 @@
+[submodule "public/design"]
+	path = public/design
+	url = git@github.com:aareese/ghostpost.git
