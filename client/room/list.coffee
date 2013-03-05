@@ -10,7 +10,7 @@ Template.roomList.rooms = ->
 
   # cache the user's GeoLocation
   cacheNothing = ->
-    alert 'If you share your location with us, we can show rooms near you!'
+    alert 'You are not sharing your location with GhostPost! Such a DOUCHE MOVE!'
     $log 'User has no GeoLocation'
 
   cacheGeoLocation = (l) ->
