@@ -1,25 +1,21 @@
 <template name="roomList">
 
-  <div id="roomList" class="page">
+  {{> avatarDetail }}
 
-    {{> avatarDetail }}
-
-    <div class="list">
-      <ul class="posts">
-        <li class="cf">
-          <ul>
-            {{#each rooms}}
-              <li><a href="#rooms/{{_id}}">{{name}}
-                {{#if hasLocation }}
-                  - {{ getDistanceToUser }}
-                {{/if}}
-              </li>
-            {{/each}}
-          </ul>
-        </li>
-      </ul>
-    </div>
-
+  <div class="list">
+    <ul class="posts">
+      <li class="cf">
+        <ul>
+          {{#each rooms}}
+            <li><a href="#rooms/{{_id}}">{{name}}
+              {{#if hasLocation }}
+                - {{ getDistanceToUser }}
+              {{/if}}
+            </li>
+          {{/each}}
+        </ul>
+      </li>
+    </ul>
   </div>
 
 </template>

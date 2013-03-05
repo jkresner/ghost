@@ -1,27 +1,26 @@
 <template name="roomDetail">
-  <div id="roomDetail" class="page">
 
-    <div class="list">
-      <ul class="posts">
-        <li class="cf">
-          <ul>
-            <a href="#">Back to list</a>
+  <div class="list">
+    <ul class="posts">
+      <li class="cf">
+        <ul>
+          <a href="#">Back to list</a>
 
-            roomDetail
-            <div id="room-{{info}}" class="room">
-            <form id="thread-post" method="POST">
-              <input name="text" type="text" placeholder="POST. What are you afraid of?" size="64"/>
-              <button type="submit">BOO(M)</button>
-            </form>
-            <h1>{{name}}</h1>
-            <div id="messages">
-              {{#each messages}}
-                {{> messageDetail }}
-              {{/each}}
-            </div>
-          </ul>
-        </li>
-      </ul>
-    </div>
+          roomDetail
+          <div id="room-{{info}}" class="room">
+          <form id="thread-post" method="POST">
+            <input name="text" type="text" placeholder="POST. What are you afraid of?" size="64"/>
+            <button type="submit">BOO(M)</button>
+          </form>
+          <h1>{{name}}</h1>
+          <div id="messages">
+            {{#each messages}}
+              {{> messageDetail }}
+            {{/each}}
+          </div>
+        </ul>
+      </li>
+    </ul>
   </div>
+
 </template>
