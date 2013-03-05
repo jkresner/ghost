@@ -16,7 +16,10 @@ Template.roomDetail.events =
       roomId: Session.get('roomId')
       text: data.text
       user: Meteor.userId()
-    Meteor.call 'createMessage', message
+      avatar: Session.get('avatar')
+    Meteor.call 'createMessage', message, (err,d)  ->
+      debugger
+      d
     evt.stopPropagation()
     evt.preventDefault()
     form[0].reset()

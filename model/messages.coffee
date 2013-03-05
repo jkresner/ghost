@@ -32,8 +32,8 @@ Meteor.methods
     data.userId = @userId
     user = Meteor.users.findOne(@userId)
     console.log(user)
-    if isAvatarExpired(user)
-      generateAvatar(user)
-    console.log(user)
+    debugger
+    #data.avatar = Session.get('avatar')
     data.created_at = new Date
+    console.log(data)
     Messages.insert data
