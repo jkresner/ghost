@@ -1,27 +1,103 @@
 <head>
-  <title>ghost</title>
+  <title>Anonymous Chat by GhostPost</title>
   <script type="text/javascript" src="/js/modernizr-latest.js"></script>
-
+  <meta name="description" content="Anonymous Event-Based Mobile Chat. ">
+  <meta name="keywords" content="chat, anonymous">
+  <link rel="stylesheet" href="/css/screen.css" media="screen, projection">
+  <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="http://www.rockymountainruby.com/favicon.ico" type="image/ico" />
+  <!--<script type="text/javascript" src="/js/prefixfree.js"></script>-->
+  <!--<script type="text/javascript" src="/js/modernizr-2.0.6.js"></script>-->
+  <meta name = "viewport" content = "initial-scale=1.0, width=device-width" />
 </head>
 
 <body>
-
-  <div id="avatarDetail" class="page">
-    {{> avatarDetail }}
+  <nav>
+      <img src = "images/logo.png">
+  </nav>
+  <div class = "button">
+      <div class = "new-post"><a href = ""><img src = "images/plus.png"></a></div>
   </div>
+  <div class="main">
+    <div class="list">
+      <ul class="posts">
+        <li class="cf">
+          {{#if currentUser}}
+          <div id="avatarDetail" class="page">
+              {{> avatarDetail }}
+          </div>
+          <div id="roomCreate" class="page">
+              {{> roomCreate }}
+          </div>
 
-  <div id="roomCreate" class="page">
-    {{> roomCreate }}
+          <div id="roomList" class="page">
+              {{> roomList }}
+          </div>
+
+          <div id="roomDetail" class="page">
+              {{> roomDetail}}
+          </div>
+
+          {{else}}
+          {{> homeExternal}}
+          {{/if}}
+        </li>
+      </ul>
+    </div>
   </div>
-
-  <div id="roomList" class="page">
-    {{> roomList }}
-  </div>
-
-  <div id="roomDetail" class="page">
-    {{> roomDetail }}
-  </div>
-
-  {{> login }}
-
 </body>
+
+<!--
+<div class = "main">
+    <!-- TODO: This will only be displayed when a user is logged in -->
+        <!--
+    <div class="avatar cf">
+        <h3><span>you are</span></h3>
+        <img src = "images/avatar.png">
+        <h1>crustyHipster3</h1>
+        <h3>your avatar will refresh in <span> 5:03 hours </span></h3>
+    </div>
+    <div class="list">
+        <h3 class = "list-title">Events near you</h3>
+        <ul class = "event">
+            <li class = "cf"><a href ="event.html">
+                <div class = "event-title span75 fL">
+                    <h2>Hackers, fools & foam</h2>
+                </div>
+                <h2 class = "right-text span25 fR">43<img src = 'images/ghost-icon.png'></h2>
+                <div class = "top-post fL">
+                    <p>"Help, I'm trapped in the bathroom!"<span class ="date"> 4 hours ago</span></p>
+                </div>
+            </a></li>
+            <li class = "cf"><a href ="event.html">
+                <div class = "event-title span75 fL">
+                    <h2>Why your cofounder is probably your worst enemy</h2>
+                </div>
+                <h2 class = "right-text span25 fR">183<img src = 'images/ghost-icon.png'></h2>
+                <div class = "top-post fL">
+                    <p>"This guy has no idea what he's talking about. What are we doing here. Let's go get beer"<span class ="date"> 3 minutes ago</span></p>
+                </div>
+            </a></li>
+            <li class = "cf"><a href ="event.html">
+                <div class = "event-title span75 fL">
+                    <h2>San Francisco Startup Bus</h2>
+                </div>
+                <h2 class = "right-text span25 fR">19<img src = 'images/ghost-icon.png'></h2>
+                <div class = "top-post fL">
+                    <p>"Stains on the bed sheets... who has a spare body condom??" </span> <span class ="date"> 11 minutes ago</p>
+                </div>
+            </a></li>
+            <li class = "cf"><a href ="event.html">
+                <div class = "event-title span75 fL">
+                    <h2>NYC Startup Bus</h2>
+                </div>
+                <h2 class = "right-text span25 fR">35<img src = 'images/ghost-icon.png'></h2>
+                <div class = "top-post fL">
+                    <p>"God we're lame. I wish we were on the SF startup bus. We are so pretentious." <span class ="date"> 11 minutes ago</span></p>
+                </div>
+            </a></li>
+        </ul>
+    </div>
+</div>
+</body>
+-->
