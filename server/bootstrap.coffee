@@ -7,9 +7,13 @@ Meteor.startup ->
      |   | |   | |   |   \\  '-. '-'   '-'  '-'   '..'  |      H O S T P O S T\n
      '^^^' '^^^' '^^^'    '--'                         |    G H O S T P O S T . i o\n"
 
-Meteor.avatars =
+Meteor.avatarImages =
   _.map _.reject(fs.readdirSync('public/images/avatars'), (file) -> file == '.DS_Store'), (file) ->
-      '/images/' + file
+      '/images/avatars/' + file
+
+Meteor.methods
+  getAvatarImages: ->
+    Meteor.avatarImages
 
 # Dev application
 

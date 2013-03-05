@@ -5,7 +5,7 @@
   <meta name="keywords" content="chat, anonymous">
   <link rel="stylesheet" href="/css/screen.css" media="screen, projection">
   <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
-  <link rel="shortcut icon" href="http://www.rockymountainruby.com/favicon.ico" type="image/ico" />
+  <!--<link rel="shortcut icon" href="http://www.rockymountainruby.com/favicon.ico" type="image/ico" />-->
   <!--<script type="text/javascript" src="/js/prefixfree.js"></script>-->
   <!--<script type="text/javascript" src="/js/modernizr-2.0.6.js"></script>-->
   <meta name = "viewport" content = "initial-scale=1.0, width=device-width" />
@@ -16,16 +16,17 @@
       <img src = "images/logo.png">
   </nav>
   <div class = "button">
-      <div class = "new-post"><a href = ""><img src = "images/plus.png"></a></div>
+    <div class = "new-post"><a href=""><img src = "images/plus.png"></a></div>
   </div>
   <div class="main">
+    {{#if currentUser}}
+    <div id="avatarDetail" class="page avatar cf">
+      {{> avatarDetail }}
+    </div>
+
     <div class="list">
       <ul class="posts">
         <li class="cf">
-          {{#if currentUser}}
-          <div id="avatarDetail" class="page">
-              {{> avatarDetail }}
-          </div>
           <div id="roomCreate" class="page">
               {{> roomCreate }}
           </div>
@@ -51,12 +52,6 @@
 <div class = "main">
     <!-- TODO: This will only be displayed when a user is logged in -->
         <!--
-    <div class="avatar cf">
-        <h3><span>you are</span></h3>
-        <img src = "images/avatar.png">
-        <h1>crustyHipster3</h1>
-        <h3>your avatar will refresh in <span> 5:03 hours </span></h3>
-    </div>
     <div class="list">
         <h3 class = "list-title">Events near you</h3>
         <ul class = "event">

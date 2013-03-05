@@ -49,9 +49,8 @@ avatarExpired = (avatar) ->
 generateAvatar = (user) ->
   avatar =
     date: new Date()
-    img: Random.choice(Meteor.avatars)
+    img: Random.choice Session.get('avatar_images')
     name: Random.choice(avatarFirstNames) + Random.choice(avatarLastNames)
     userId: user._id if user?
   id = Avatars.insert avatar
   avatar
-
