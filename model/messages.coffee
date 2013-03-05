@@ -1,7 +1,8 @@
 # id
 # user_id: user id
 # text
-# created_at
+# score
+# createdAt
 
 Messages = new Meteor.Collection 'messages'
 
@@ -14,14 +15,12 @@ Messages.allow
 
 Meteor.methods
   createMessage: (data) ->
-    console.log data
     d = data || {}
 
     if (! (typeof d.text is "string" && d.text.length) )
       console.log 'required param missing'
       throw new Meteor.Error 400, 'Required parameter missing'
 
-    console.log data
     if d.text.length > 200 then throw new Meteor.Error 413, "Text too long"
 
     if !@userId then throw new Meteor.Error 403, "You must be logged in"
@@ -31,9 +30,5 @@ Meteor.methods
 
     data.userId = @userId
     user = Meteor.users.findOne(@userId)
-    console.log(user)
-    debugger
-    #data.avatar = Session.get('avatar')
-    data.created_at = new Date
-    console.log(data)
+    data.createdAt = (new Date).getTime()
     Messages.insert data
