@@ -38,7 +38,7 @@ Template.roomDetail.events =
     placeVote(elt, -1)
     elt.prop('disabled', true)
 
-  'click .share a': (evt) ->
+  'click .share': (evt) ->
     elt = $(evt.currentTarget)
     messageId = elt.data('messageid') # Yes, lower case, it's retarded
     router.navigate 'message/' + messageId
