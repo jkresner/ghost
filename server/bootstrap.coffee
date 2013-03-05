@@ -8,9 +8,6 @@ Meteor.startup ->
      | OO| | OO| | OO|   / _.-' .-.   .-.  .-.   .''.  |        O S T P O S T\n
      |   | |   | |   |   \\  '-. '-'   '-'  '-'   '..'  |      H O S T P O S T\n
      '^^^' '^^^' '^^^'    '--'                         |    G H O S T P O S T . i o\n"
-
-Rooms._ensureIndex({ loc : "2d" });
-
 # Dev application
 
 Accounts.onCreateUser (options, user) ->

@@ -21,26 +21,25 @@ addAggregateSupport = (collection) ->
       throw result[1];
 
     return result[1];
-_.each [Messages, Votes], (obj) -> 
+_.each [Messages, Votes], (obj) ->
   addAggregateSupport(obj)
 
 # Periodically update room scores
 updateRoomScores = ->
-  console.log('wut')
+  console.log 'updateRoomScores'
   roomMessageCounts = Messages.aggregate [
-    {$group: {_id: "$roomId", count: {$sum: 1}}}, 
-    {$sort: {roomId: 1}}, 
+    {$group: {_id: "$roomId", count: {$sum: 1}}},
+    {$sort: {roomId: 1}},
     {$match: {createdAt: {$gt: (new Date()).getTime() - 60*1000}}}]
   roomVoteCounts = Votes.aggregate [
-    {$group: {_id: "$roomId", count: {$sum: 1}}}, 
-    {$sort: {roomId: 1}}, 
+    {$group: {_id: "$roomId", count: {$sum: 1}}},
+    {$sort: {roomId: 1}},
     {$match: {createdAt: {$gt: (new Date()).getTime() - 60*1000}}}]
 
   rooms = []
   i = messageIndex = voteIndex = 0
   count = Math.max roomMessageCounts.count, roomVoteCounts.count
   while(i < count)
-    console.log('blah')
     msgCount = roomMessageCounts[messageIndex]
     voteCount = roomVoteCounts[voteIndex]
     if msgCount.roomId == voteCount.roomId
@@ -54,8 +53,8 @@ updateRoomScores = ->
     i++
   _.each rooms, (room) ->
     Rooms.update({_id: room.roomId}, {score: room.count})
-  console.log(rooms)
 
+  console.log('updateRoomScores.complete'. rooms)
 
 setInterval updateRoomScores, 10 * 60 * 1000 # Update room scores every 10 minutes
 updateRoomScores()

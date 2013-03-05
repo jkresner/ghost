@@ -1,7 +1,7 @@
-permissions = ['email', 'user_events', 'user_groups', 'read_friendlists', 'publish_actions', ]
 Accounts.ui.config
   requestPermissions:
-    facebook: permissions
+    facebook: ['email', 'user_events', 'user_groups', 'read_friendlists', 'publish_actions', ]
+
 
 Meteor.loginWithFacebook  = _.wrap Meteor.loginWithFacebook, (login, opts, callback) ->
   newCallback = ->
@@ -13,6 +13,7 @@ Meteor.loginWithFacebook  = _.wrap Meteor.loginWithFacebook, (login, opts, callb
     window.history.back()
   login(opts, callback)
 
+
 Meteor.autorun ->
 
   roomId = Session.get('roomId')
@@ -21,16 +22,17 @@ Meteor.autorun ->
     $log 'setCurrentRoom', roomId
     if roomId? then Session.set 'room', Rooms.findOne(roomId)
 
-  roomSubcribe = (lat, lon) ->
-    $log 'roomSubcribe', lat, lon
+  roomSubscribe = (lat, lon) ->
+    $log 'roomSubscribe', lat, lon
     Meteor.subscribe 'rooms', lat, lon, setCurrentRoom
 
-  geoRoomSubcribe = (l) ->
-    $log 'geoRoomSubcribe', l
-    roomSubcribe l.coords.latitude, l.coords.longitude
+  geoRoomSubscribe = (l) ->
+    $log 'geoRoomSubscribe', l
+    roomSubscribe l.coords.latitude, l.coords.longitude
 
+  noLocation = -> console.log('not location')
 
-  geo.getGeoLocation(geoRoomSubcribe, roomSubcribe, {timeout: 8000})
+  geo.getGeoLocation(geoRoomSubscribe, roomSubscribe)
 
 
   Meteor.subscribe 'room_messages', roomId, ->
@@ -38,7 +40,7 @@ Meteor.autorun ->
 
 
 Meteor.startup ->
-  geo.setUserLocation()
+  # geo.setUserLocation()
 
   $ ->
     window.router = new GhostRouter()

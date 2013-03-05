@@ -1,17 +1,13 @@
-Template.roomList.popularRooms = ->
-  Rooms.find {score: {$gt: 0}}, {sort: {score: -1}}
+# Template.roomList.popularRooms = ->
+#   Rooms.find {score: {$gt: 0}}, {sort: {score: -1}}
 
-
-Template.roomList.myRooms = ->
-  Rooms.find({owner: getUserId()})
-
+# Template.roomList.myRooms = ->
+#   Rooms.find({owner: getUserId()})
 
 Template.roomList.rooms = ->
-  Rooms.find().fetch()
-  #Session.get 'roomsListRooms'
-
-
-
+  method = 'all'
+  if method is 'all'
+    Rooms.find()
 
 
 Template.roomList.hasLocation = ->

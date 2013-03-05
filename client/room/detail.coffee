@@ -10,7 +10,7 @@ Template.roomDetail.messages = ->
 Template.roomDetail.distanceFromUser = ->
   roomLoc = @loc
   userLoc = Session.get('userLoc')
-  $log 'roomLoc', roomLoc, '@loc', @loc
+  $log 'distanceFromUser', 'roomLoc', roomLoc, '@loc', @loc
 
   if roomLoc
     if Session.get('userLoc')
