@@ -1,28 +1,26 @@
 Template.roomCreate.error = -> Session.get 'roomCreateError'
 
+
+
 Template.roomCreate.events =
-  'click input.add': (e, t) ->
-    input = $(t.find("#roomCreateName"))
+  'click button.add': (e, t) ->
 
-
-    foundLocation = (location) ->
-      console.log("Room " + input.val() + " created at long:"+ location.coords.longitude + " / lat:" + location.coords.latitude)
-      sendCreate location.coords.longitude, location.coords.latitude
-    noLocation = ->
-      console.log("Room " + input.val() + " created without location")
-      sendCreate()
-
-    getGeoLocation(Meteor.user, foundLocation, noLocation)
+    data =
+      name: t.find("#roomName").value
+      ispublic: t.find("#rb_public").checked
 
     sendCreate = (user_long, user_lat) ->
-      data =
-        name: input.val()
-        ispublic: true
-        long: user_long
-        lat: user_lat
-
-      input.val('')
+      data.long = user_long
+      data.lat = user_lat
+      $log 'sendingCreateRoom', data
 
       Meteor.call 'createRoom', data, (err, data) ->
-        if ! err? then console.log(data) else console.log(err)
-        router.navigate('rooms/' + data, false)
+        if ! err? then console.log('createRoom.success',data) else console.log(err)
+        router.navigate "room/#{data}", { trigger: true }
+        $(t.find("#roomName")).val('')
+
+    foundLocation = (loc) ->
+      sendCreate loc.coords.longitude, loc.coords.latitude
+
+
+    geo.getGeoLocation foundLocation, sendCreate

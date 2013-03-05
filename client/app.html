@@ -4,8 +4,8 @@
   <meta name="keywords" content="chat, anonymous">
   <link rel="stylesheet" href="/css/screen.css" media="screen, projection">
   <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
-  <!--<script type="text/javascript" src="/js/prefixfree.js"></script>-->
   <meta name = "viewport" content = "initial-scale=1.0, width=device-width" />
+  <!--<script type="text/javascript" src="/js/prefixfree.js"></script>-->
 </head>
 
 <body>
@@ -16,24 +16,20 @@
     <div class="new-post"><a href="#new-room"><img src="images/plus.png"></a></div>
   </div>
   <div class="main">
-    <div class="list">
-      <ul class="posts">
-        <li class="cf">
-          <div id="roomCreate" class="page">
-              {{> roomCreate }}
-          </div>
 
-          <div id="roomList" class="page">
-              {{> roomList }}
-          </div>
-
-          <div id="roomDetail" class="page">
-              {{> roomDetail}}
-          </div>
-
-          {{> login}}
-        </li>
-      </ul>
+    <div id="roomCreate" class="page">
+        {{> roomCreate }}
     </div>
+
+    <div id="roomList" class="page">
+        {{> roomList }}
+    </div>
+
+    <div id="roomDetail" class="page">
+        {{> roomDetail}}
+    </div>
+
+    {{> login}}
+
   </div>
 </body>

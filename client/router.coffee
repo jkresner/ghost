@@ -3,19 +3,14 @@ class GhostRouter extends Backbone.Router
   routes:
     "": "roomList"
     "new-room": "roomCreate"
-    "rooms/:roomId": "roomDetail"
-    "threads/:threadId": "threadDetail"
-    "threads/create": "threadCreate"
+    "room/:roomId": "roomDetail"
     "avatar/:avatarId": "avatarDetail"
-    "rooms/create": "roomCreate"
 
-  # Magic that displays the div with an ID named after the route
   initialize: ->
     setSessionAvatar()
 
   roomList: () ->
     @showPage 'roomList'
-    # @trigger 'roomsListVisible'
 
   roomDetail: (roomId) ->  # list of threads
     @showPage 'roomDetail'
@@ -32,6 +27,7 @@ class GhostRouter extends Backbone.Router
     if oldUser isnt userdId
       Session.set "userId", userId
 
+  # Magic that displays the div with an ID named after the route
   showPage: (pageId) ->
     $log 'Router.'+pageId
     $('.page').hide()

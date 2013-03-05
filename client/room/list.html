@@ -1,5 +1,9 @@
 <template name="roomList">
 
+<div class="list">
+  <ul class="posts">
+    <li class="cf">
+
   {{> avatarDetail }}
 
     <ul id="room-tabs">
@@ -15,7 +19,7 @@
             <ul id="nearby-rooms" class="tab" style="display: block;">
               "nearby"
               {{#each rooms}}
-                <li><a href="#rooms/{{_id}}">{{name}}
+                <li><a href="#room/{{_id}}">{{name}}
                   {{#if hasLocation }}
                     - {{ getDistanceToUser }}
                   {{/if}}
@@ -32,7 +36,7 @@
             <ul id="popular-rooms" class="tab">
               "popular"
               {{#each popularRooms}}
-                <li><a href="#rooms/{{_id}}">{{name}}
+                <li><a href="#room/{{_id}}">{{name}}
                   {{#if loc}}
                     , {{loc}}
                   {{/if}}
@@ -49,7 +53,7 @@
             <ul id="my-rooms" class="tab">
               "my"
               {{#each myRooms}}
-                <li><a href="#rooms/{{_id}}">{{name}}
+                <li><a href="#room/{{_id}}">{{name}}
                   {{#if loc}}
                     , {{loc}}
                   {{/if}}
@@ -60,6 +64,10 @@
         </ul>
       </div>
     </div>
+  </div>
+
+      </li>
+    </ul>
   </div>
 
 </template>

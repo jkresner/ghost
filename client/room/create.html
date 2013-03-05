@@ -1,6 +1,25 @@
 <template name="roomCreate">
 
-  <input id="roomCreateName" name="text" type="text" placeholder="Room Name..." size="32"/>
-  <input type="button" class="add" value="Create">
+<div class="create-group cf">
+  <h2>name your room</h2>
+  <input id="roomName" type="text" placeholder="event, group name, or topic">
+  <h2>do you want to be found?</h2>
+
+  <input id="rb_public" type="radio" name="privacy" value="public" class="radio" checked="">
+  <label for="rb_public" class="radio-label">public</label>
+  <input id="rb_private" type="radio" name="privacy" value="private" class="radio">
+  <label for="rb_private" class="radio-label">private</label>
+
+  <!-- <h2>add a location (optional)</h2>
+  <input type="textinput" placeholder="venue name">
+  <button class="large-button">add current GPS location</button>
+  <h3><span>restrict group access to 1 mile from this location?</span></h3>
+  <input type="radio" name="privacy" value="no" class="radio" checked="">
+  <h3 class="radio-label">no</h3>
+  <input type="radio" name="privacy" value="yes" class="radio">
+  <h3 class="radio-label">yes</h3> -->
+  <button class="large-button large-submit add">create</button>
+</div>
+
 
 </template>
