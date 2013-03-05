@@ -1,7 +1,9 @@
-Template.roomList.Rooms = ->
+Template.roomList.rooms = ->
   Session.get 'roomsListRooms'
 
 setRoomsListRooms = ->
+
+  console.log("setRoomsListRooms() is being executed")
 
   foundLocation = (location) ->
     # Session.set('loc','lat: '+location.coords.latitude+', lan: '+ location.coords.longitude);

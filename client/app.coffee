@@ -4,7 +4,7 @@ Accounts.ui.config
 
 
 Meteor.autorun ->
-  Meteor.subscribe 'rooms'
+  Meteor.subscribe 'rooms', setRoomsListRooms
   Meteor.subscribe 'room_threads', Session.get('roomId')
   $log "Meteor.autorun.userId", Meteor.userId()
   #Meteor.subscribe 'user_avatars', Meteor.userId()

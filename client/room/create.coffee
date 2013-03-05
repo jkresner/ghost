@@ -25,4 +25,4 @@ Template.roomCreate.events =
 
       Meteor.call 'createRoom', data, (err, data) ->
         if ! err? then console.log(data) else console.log(err)
-        router.navigate('rooms/' + data)
+        router.navigate('rooms/' + data, false)

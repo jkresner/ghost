@@ -18,7 +18,6 @@ class GhostRouter extends Backbone.Router
   roomList: () ->
     @showPage 'roomList'
     # @trigger 'roomsListVisible'
-    setRoomsListRooms()
 
   roomDetail: (roomId) ->  # list of threads
     @showPage 'roomDetail'

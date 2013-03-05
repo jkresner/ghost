@@ -14,7 +14,11 @@
 
     <ul>
       {{#each rooms}}
-        <li><a href="#rooms/{{_id}}">{{name}}</li>
+        <li><a href="#rooms/{{_id}}">{{name}}
+          {{#if loc}}
+            , {{loc}}
+          {{/if}}
+        </li>
       {{/each}}
     </ul>
 </template>
