@@ -131,6 +131,10 @@ nav {
 
 /* event list */
 
+.tab {
+  display: none;
+}
+
 .right-text {
     text-align: right;
     color: #60F7FC;

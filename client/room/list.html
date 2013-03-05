@@ -2,20 +2,64 @@
 
   {{> avatarDetail }}
 
-  <div class="list">
-    <ul class="posts">
-      <li class="cf">
-        <ul>
-          {{#each rooms}}
-            <li><a href="#rooms/{{_id}}">{{name}}
-              {{#if hasLocation }}
-                - {{ getDistanceToUser }}
-              {{/if}}
-            </li>
-          {{/each}}
-        </ul>
-      </li>
+    <ul id="room-tabs">
+      <li><a data-tab="nearby-rooms" href="javascript://">Nearby</a></li>
+      <li><a data-tab="popular-rooms" href="javascript://">Popular</a></li>
+      <li><a data-tab="my-rooms" href="javascript://">Mine</a></li>
     </ul>
+
+    <div id="room-tab-content">
+      <div class="list">
+        <ul class="posts">
+          <li class="cf">
+            <ul id="nearby-rooms" class="tab" style="display: block;">
+              "nearby"
+              {{#each rooms}}
+                <li><a href="#rooms/{{_id}}">{{name}}
+                  {{#if hasLocation }}
+                    - {{ getDistanceToUser }}
+                  {{/if}}
+                </li>
+              {{/each}}
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="list">
+        <ul class="posts">
+          <li class="cf">
+            <ul id="popular-rooms" class="tab">
+              "popular"
+              {{#each popularRooms}}
+                <li><a href="#rooms/{{_id}}">{{name}}
+                  {{#if loc}}
+                    , {{loc}}
+                  {{/if}}
+                </li>
+              {{/each}}
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="list">
+        <ul class="posts">
+          <li class="cf">
+            <ul id="my-rooms" class="tab">
+              "my"
+              {{#each myRooms}}
+                <li><a href="#rooms/{{_id}}">{{name}}
+                  {{#if loc}}
+                    , {{loc}}
+                  {{/if}}
+                </li>
+              {{/each}}
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 
 </template>

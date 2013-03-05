@@ -38,7 +38,7 @@ Meteor.methods
     #if !@userId then throw new Meteor.Error 403, "You must be logged in" #commented out as we allow anonymous users
 
     Rooms.insert
-      #owner: @userId # took out owner as that is not part of the current design
+      owner: getUser() # took out owner as that is not part of the current design
       name: d.name
       ispublic: !! d.ispublic
       loc: [d.long, d.lat]

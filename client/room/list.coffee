@@ -1,4 +1,12 @@
+Template.roomList.popularRooms = ->
+  # TODO: this
+  Rooms.find({})
+
+Template.roomList.myRooms = ->
+  Rooms.find({owner: getUserId()})
+
 Template.roomList.rooms = ->
+  return [];
   Session.get 'roomsListRooms'
 
 setRoomsListRooms = ->
@@ -50,3 +58,10 @@ Template.roomList.getDistanceToUser = ->
     userLoc = Session.get 'userLoc'
     (Math.round(distance(@loc[0],@loc[1],userLoc[0], userLoc[1])*100)/100) + " miles away"
 
+
+Template.roomList.events
+  'click #room-tabs a': (evt) ->
+    elt = $(evt.currentTarget)
+    $('#room-tab-content .tab').hide()
+    $('#' + elt.data('tab')).show()
+    
