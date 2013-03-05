@@ -6,6 +6,7 @@ geo =
   setUserLocation: ->
 
     cacheNothing = ->
+      alert ("You don't share your location with GhostPost? What a DOUCHE MOVE!")
       $log 'User has no GeoLocation. Not setting up Session(userLoc)'
 
     cacheGeoLocation = (l) ->
