@@ -10,7 +10,13 @@ Avatars.allow
   insert: (userId, msg) ->
     if userId == Meteor.userId()
       true
-  update: (userId, messages, fieldNames, mods) -> false
+  update: (userId, messages, fieldNames, mods) ->
+    _.all avatars, (a) ->
+      if a.userId? then return false # Already owned
+      allowed = ["userId"]
+      if _.difference(fields, allowed).length then return false # tried to write to forbidden field
+      true
+
   remove: (userId, msgs) ->
     Meteor.users.findOne({id: userId}).admin ? true : false
 
@@ -49,6 +55,7 @@ setSessionAvatar = ->
   avatar
 
 avatarExpired = (avatar) ->
+  return true if ! avatar?
   avatar.date < ((new Date()).valueOf() - 24 * 60 * 60 *1000)
 
 generateAvatar = (user) ->

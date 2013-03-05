@@ -2,6 +2,7 @@ class GhostRouter extends Backbone.Router
 
   routes:
     "": "roomList"
+    "me": "userDetail"
     "new-room": "roomCreate"
     "room/:roomId": "roomDetail"
     "messages/:messageId": "messageDetail"
@@ -20,6 +21,9 @@ class GhostRouter extends Backbone.Router
 
   roomCreate: () ->
     @showPage 'roomCreate'
+
+  userDetail: () ->
+    @showPage 'userDetail'
 
   avatarDetail: (avatarId) ->  # User page
     @showPage 'avatarDetail'

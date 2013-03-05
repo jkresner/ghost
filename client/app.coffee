@@ -1,8 +1,17 @@
+permissions = ['email', 'user_events', 'user_groups', 'read_friendlists', 'publish_actions', ]
 Accounts.ui.config
   requestPermissions:
-    facebook: ['email', 'user_events', 'user_groups', 'read_friendlists', 'publish_actions', ]
+    facebook: permissions
 
-
+Meteor.loginWithFacebook  = _.wrap Meteor.loginWithFacebook, (login, opts, callback) ->
+  newCallback = ->
+    callback()
+    # Set session avatar
+    avatar = Session.get('avatar')
+    if ! avatar.userId?
+      Avatars.update({_id: avatar._id}, {userId: Meteor.userId()})
+    window.history.back()
+  login(opts, callback)
 
 Meteor.autorun ->
 
