@@ -7,6 +7,18 @@ Template.roomList.myRooms = ->
 
 
 Template.roomList.rooms = ->
+
+  # cache the user's GeoLocation
+  cacheNothing = ->
+    alert 'If you share your location with us, we can show rooms near you!'
+    $log 'User has no GeoLocation'
+
+  cacheGeoLocation = (l) ->
+    $log 'Caching GeoLocation of user at lon: ', l.coords.longitude , ' / lat: ', l.coords.latitude
+    Session.set 'userLoc', [ l.coords.longitude , l.coords.latitude ]
+
+  geo.getGeoLocation(cacheGeoLocation, cacheNothing)
+
   Rooms.find().fetch()
   #Session.get 'roomsListRooms'
 
@@ -39,9 +51,8 @@ Template.roomList.hasLocation = ->
 
 
 Template.roomList.getDistanceToUser = ->
-  if Session.get 'userLoc'
-    userLoc = Session.get 'userLoc'
-    (Math.round(distance(@loc[0],@loc[1],userLoc[0], userLoc[1])*100)/100) + " miles away"
+  if Session.get('userLoc')?
+    Math.round( distance( @loc[0], @loc[1], Session.get('userLoc')[0], Session.get('userLoc')[1] ) *100 ) / 100 + " mi - "
 
 
 Template.roomList.events
