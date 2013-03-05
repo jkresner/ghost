@@ -8,10 +8,6 @@ Avatars = new Meteor.Collection 'avatars'
 
 Avatars.allow
   insert: (userId, msg) ->
-    console.log "INSERT"
-    console.log userId
-    console.log Meteor.userId()
-    console.log msg
     if userId == Meteor.userId()
       true
   update: (userId, messages, fieldNames, mods) -> false
