@@ -2,14 +2,15 @@ Meteor.publish 'rooms', (lat,lon) ->
 
   # checking if lon exists. lat can also contain an error message (if the user denies geoLocation)
   if lon?
-    Rooms.find( { loc : { $near: [lon, lat] } } )
     console.log 'publish.rooms', lat, lon
     console.log  Rooms.find( { loc : { $near: [lon, lat] } } ).fetch()
+    Rooms.find( { loc : { $near: [lon, lat] } } )
+
 
   else
-    Rooms.find()
     console.log 'publish.rooms without location lat:', lat, ' lon: ', lon
     console.log Rooms.find().fetch()
+    Rooms.find()
 
   #Rooms.find()
   #Rooms.find loc : { $within : { $box : box } }
