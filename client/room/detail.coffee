@@ -43,3 +43,15 @@ Template.roomDetail.events =
     placeVote(elt, -1)
     elt.prop('disabled', true)
 
+  'click .share a': (evt) ->
+    elt = $(evt.currentTarget)
+    messageId: elt.data('messageid') # Yes, lower case, it's retarded
+    router.navigate 'message/' + messageId
+    # $('#share-dialog').dialog('close')
+    $('#share-dialog').dialog
+      modal: true
+      position: { my: "center", at: "center", of: window }
+      resizable: false
+      title: "Where to share?"
+      draggable: false
+      closeText: "Cancel"
