@@ -11,8 +11,6 @@ class GhostRouter extends Backbone.Router
 
   # Magic that displays the div with an ID named after the route
   initialize: ->
-    $log 'Router.init:', @
-
     setSessionAvatar()
 
   roomList: () ->

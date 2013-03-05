@@ -33,8 +33,6 @@ distance = (lon1, lat1, lon2, lat2) ->
   dist = dist * 60 * 1.1515
   dist
 
-Template.roomList.avatar  = -> Session.get 'avatar'
-
 Template.roomList.hasLocation = ->
   if @loc
     if @loc[1] != null
