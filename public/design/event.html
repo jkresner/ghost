@@ -9,7 +9,7 @@
 <title>Ghost Post</title>
 
 <link rel="stylesheet" href="css/screen.css" media="screen, projection">
-<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+<!--<link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>-->
 <link rel="shortcut icon" href="images/favicon.ico" type="image/ico" />
 <script type="text/javascript" src="js/prefixfree.js"></script>
 <script type="text/javascript" src="js/modernizr-2.0.6.js"></script>
@@ -19,74 +19,64 @@
 
 <body>
     <nav>
-        <img src = "images/logo.png">
+        <div class="cf fL mL">
+            <img src = "images/logo.png">
+        </div>
+        <div class="cf fR mR avatar-header">
+            <p>today you are</p>
+            <img src = "images/avatars/av11.png" class = "avatar-tiny fL">
+            <h3 class = "fL">burntSoap</h3>
+        </div>
     </nav>
     <!--<div class = "button">
         <div class = "new-post"><a href = ""><img src = "images/plus.png"></a></div>
     </div>-->
     <div class = "main">
         <div class = "avatar cf">
-            <h3><span>this is</span></h3>
-            <h1>Hackers, fools & foam</h1>
-            <h3><span>43 ghosts</span><a href = ""> share this room<img src = "images/share.png" style="margin-bottom:-3px"></a></h3>
+            <h2>Hackers, fools & foam</h2>
+            <h3><span class="fL">43 ghosts</span><a href = "" class="fR"><span>share room</span><img src = "images/share.png" style="margin-bottom:-3px"></a></h3>
         </div>
         <div class = "list">
-            <ul class = "toggle">
-                <li><a href =""><h3 class = "list-title">popular</h3></a></li>
-                <li class = "unselected"><a href =""><h3 class = "list-title">newest</h3></a></li>
+            <ul class = "toggle cf">
+                <li class="selected fL"><a href =""><h3 class = "list-title">live</h3></a></li>
+                <li class = "right-option"><a href =""><h3 class = "list-title">popular</h3></a></li>
             </ul>
             <ul class = "posts">
                 <li class = "cf">
-                    <h2 class = "right-text span25 fR">43<img src = 'images/ghost-icon.png'></h2>
+                    <div class = "span100 fL">
+                        <a href="post.html"><p>"Help, I'm trapped in the bathroom!"<span class ="date"> 4 hours ago</span></p></a>
+                    </div>
+                    <div class="fR sharing">
+                        <h2 class = "right-text span25 fR">43</h2>
+                        <a href = "" class="boo"><img src="images/boo.png"></a>
+                        <a href = "" class="yay"><img src="images/yay.png"></a>
+                    </div>
                     <img src = "images/avatars/av1.png" class = "avatar-small fL">
-                    <h2>crustyHipster3</h2>
-                    <div class = "span100 fL">
-                        <p>"Help, I'm trapped in the bathroom!"<span class ="date"> 4 hours ago</span></p>
-                        <ul class = "social cf">
-                            <li><a href = ""><img src = "images/yay.png"></a></li>
-                            <li><a href = ""><img src = "images/boo.png"></a></li>
-                            <li><a href = ""><img src = "images/share.png"></a></li>
-                        </ul>
-                    </div>
+                    <h3>crustyHipster3</h3>
                 </li>
                 <li class = "cf">
-                    <h2 class = "right-text span25 fR">183<img src = 'images/ghost-icon.png'></h2>
-                    <img src = "images/avatars/av3.png" class = "avatar-small fL">
-                    <h2>shamelessUnicorn</h2>
                     <div class = "span100 fL">
-                        <p>"This guy has no idea what he's talking about. What are we doing here. Let's go get beer"<span class ="date"> 3 minutes ago</span></p>
-                        <ul class = "social cf">
-                            <li><a href = ""><img src = "images/yay.png"></a></li>
-                            <li><a href = ""><img src = "images/boo.png"></a></li>
-                            <li><a href = ""><img src = "images/share.png"></a></li>
-                        </ul>
+                        <a href="post.html"><p>"First person to offer me a beer gets to see who I am!"<span class ="date"> 4 hours ago</span></p></a>
                     </div>
-                </li>
-                <li class = "cf">
-                    <h2 class = "right-text span25 fR">19<img src = 'images/ghost-icon.png'></h2>
-                    <img src = "images/avatars/av8.png" class = "avatar-small fL">
-                    <h2>squeakyMonkey</h2>
-                    <div class = "span100 fL">
-                        <p>"Stains on the bed sheets... who has a spare body condom??" </span> <span class ="date"> 11 minutes ago</p>
-                        <ul class = "social cf">
-                            <li><a href = ""><img src = "images/yay.png"></a></li>
-                            <li><a href = ""><img src = "images/boo.png"></a></li>
-                            <li><a href = ""><img src = "images/share.png"></a></li>
-                        </ul>
+                    <div class="fR sharing">
+                        <h2 class = "right-text span25 fR">43</h2>
+                        <a href = "" class="boo"><img src="images/boo.png"></a>
+                        <a href = "" class="yay"><img src="images/yay.png"></a>
                     </div>
-                </li>
-                <li class = "cf">
-                    <h2 class = "right-text span25 fR">- 35<img src = 'images/ghost-icon.png'></h2>
                     <img src = "images/avatars/av11.png" class = "avatar-small fL">
-                    <h2>burntSoap</h2>
+                    <h3>mellowSoap</h3>
+                </li>
+                <li class = "cf">
                     <div class = "span100 fL">
-                        <p>"God we're lame. I wish we were on the SF startup bus. We are so pretentious." <span class ="date"> 11 minutes ago</span></p>
-                        <ul class = "social cf">
-                            <li><a href = ""><img src = "images/yay.png"></a></li>
-                            <li><a href = ""><img src = "images/boo.png"></a></li>
-                            <li><a href = ""><img src = "images/share.png"></a></li>
-                        </ul>
+                        <a href="post.html"><p>"This shit is going off! Who wants shots?? Free shots for the whole bar!"<span class ="date"> 4 hours ago</span></p></a>
                     </div>
+                    <div class="fR sharing">
+                        <h2 class = "right-text span25 fR">43</h2>
+                        <a href = "" class="boo"><img src="images/boo.png"></a>
+                        <a href = "" class="yay"><img src="images/yay.png"></a>
+                    </div>
+                    <img src = "images/avatars/av6.png" class = "avatar-small fL">
+                    <h3>angryHippie</h3>
                 </li>
             </ul>
         </div>

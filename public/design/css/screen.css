@@ -29,19 +29,19 @@ body {
     width: 25%;
 }
 
-.fL {
-    float: left;
+.mL {
+    margin-left: 20px;
 }
 
-.fR {
-    float: right;
+.mR {
+    margin-right: 20px;
 }
 
 h1 {
     font-family: Oswald;
     margin: 0;
-    font-size: 2.8em;
-    color: #808080;
+    font-size: 1.6em;
+    color: #f2f2f2;
 }
 
 h3 {
@@ -50,6 +50,7 @@ h3 {
     font-size: 1.4em;
     font-weight: 300;
     letter-spacing: 0.5px;
+    color: #b2b2b2  ;
 }
 
 ul {
@@ -74,7 +75,7 @@ p {
     font-size: 14px;
     margin: 5px 0;
     font-family: helvetica neue;
-    color: #B2B2B2;
+    color: #f2f2f2;
 }
 
 span {
@@ -114,21 +115,33 @@ nav {
     border-radius: 1em;
 }
 
+.avatar-header p {
+    color: #333333;
+    font-style: italic;
+    float: left;
+    margin: 8px 5px 0 0;
+}
+
 /* main */
 
 .main {
-    margin-top: 85px;
+    margin-top: 59px;
 }
 
 /* avatar */
 
 .avatar {
     /*background: rgba(255,255,255,0.1);*/
-    border-radius: 1em;
-    padding: 15px 0;
-    border: 1px dashed #60F7FC;
-    text-align: center;
-    margin: 20px;
+    padding: 10px 5%;
+}
+
+.avatar h2 {
+    text-transform: uppercase;
+}
+
+.list {
+    border-bottom: 1px dashed #60F7FC;
+    border-top: 1px dashed #60F7FC;
 }
 
 /* event list */
@@ -138,31 +151,21 @@ nav {
     color: #60F7FC;
 }
 
-.list {
-    color: #B3B3B3;
-}
-
-h3.list-title {
-    margin: 0 0 10px 20px;
-    color: #f2f2f2;
-    text-transform: uppercase;
-}
-
 .list li {
     background: rgba(0,0,0,0.2);
-    padding: 10px 5%;
+    padding: 3px 5%;
     margin-bottom: 3px;
     float: left;
     width: 90%;
 }
 
-.list li a:hover, .list li a:active {
+.list li:hover, .list li:active {
     background: rgba(0,0,0,0.5);
     -webkit-transition: background .3s; -moz-transition: background .3s;
 }
 
 .top-post {
-    border-top: 1px dashed #60F7FC;
+    border-top: 1px dashed  ;
     margin-top: 5px;
     padding-top: 5px;
 }
@@ -170,23 +173,23 @@ h3.list-title {
 /* posts */
 
 ul.toggle {
-    margin: 0 20px;
+    margin: 0;
 }
 
-ul.toggle li {
-    width: 29%;
-    float: left;
-    padding: 20px 0 0 0;
-    margin: 0 10px 0 0;
-    border-radius: 1em 1em 0 0;
-}
-
-li.unselected {
+ul.toggle li.selected {
     background: rgba(0,0,0,0.5);
 }
 
-li.unselected:hover, li.unselected:active {
-    background: #181818;
+ul.toggle li {
+    background: transparent;
+    width: 45%;
+    padding: 0 0 0 5%;
+    margin: 0;
+}
+
+li.right-option {
+    float: right;
+    padding: 0 5% 0 0;
 }
 
 ul.social li {
@@ -198,8 +201,44 @@ ul.social li {
     text-align: center;
 }
 
+.sharing {
+    width: 150px;
+    margin-top: -6px;
+}
+
+.sharing a {
+    width: 30px;
+    height: 30px;
+    float: right;
+}
+
+a.yay {
+    margin: 6px 0 0 10px;
+}
+
+a.boo {
+    margin: 7px -10px 0 4px;
+}
+
+a.share {
+    margin: 5px 4px 0 0;
+}
+
+
+h3.list-title {
+    margin: 10px 0;
+    color: #F2F2F2;
+    text-transform: uppercase;
+}
+
 img.avatar-small {
     width: 24px;
+    margin-top: 0px;
+    margin-right: 3px;
+}
+
+img.avatar-tiny {
+    width: 17px;
     margin-top: 9px;
     margin-right: 3px;
 }
@@ -305,13 +344,14 @@ button.large-submit {
 }
 
 .solo {
-    width: 50%;
+    width: 88%;
     height: auto;
     background: rgba(0,0,0,0.5);
     position: absolute;
     left: 0;
     right: 0;
-    margin: auto;
+    margin: 0 5%;
+    padding: 20px 1%;
 }
 
 p.postText {
@@ -343,3 +383,11 @@ ul.soloShare {
 .cf:before, .cf:after { content: ""; display: table; }
 .cf:after { clear: both; }
 .cf { zoom: 1; }
+
+.fL {
+    float: left;
+}
+
+.fR {
+    float: right;
+}
