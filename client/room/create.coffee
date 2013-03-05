@@ -4,8 +4,6 @@ Template.roomCreate.events =
   'click input.add': (e, t) ->
     input = $(t.find("#roomCreateName"))
 
-    user_long = ''
-    user_lat = ''
 
     foundLocation = (location) ->
       console.log("Room " + input.val() + " created at long:"+ location.coords.longitude + " / lat:" + location.coords.latitude)
@@ -20,7 +18,8 @@ Template.roomCreate.events =
       data =
         name: input.val()
         ispublic: true
-        loc: [user_long, user_lat]
+        long: user_long
+        lat: user_lat
 
       input.val('')
 

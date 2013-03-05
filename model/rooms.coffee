@@ -41,7 +41,6 @@ Meteor.methods
       #owner: @userId # took out owner as that is not part of the current design
       name: d.name
       ispublic: !! d.ispublic
-      long: d.long
-      lat: d.lat
+      loc: [d.long, d.lat]
       # start: d.start
       # end: d.end
