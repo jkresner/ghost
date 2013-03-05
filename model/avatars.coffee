@@ -56,11 +56,11 @@ setSessionAvatar = ->
 
 avatarExpired = (avatar) ->
   return true if ! avatar?
-  avatar.date < ((new Date()).valueOf() - 24 * 60 * 60 *1000)
+  avatar.createdAt < ((new Date()).getTime() - 24 * 60 * 60 *1000)
 
 generateAvatar = (user) ->
   avatar =
-    date: new Date()
+    createdAt: (new Date()).getTime()
     img: Random.choice avatars # TODO: FIX THIS Session.get('avatar_images')
     name: Random.choice(avatarFirstNames) + Random.choice(avatarLastNames)
     userId: user._id if user?
