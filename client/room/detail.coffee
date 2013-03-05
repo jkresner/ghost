@@ -29,18 +29,19 @@ placeVote = (elt, value) ->
   Meteor.call 'createVote', vote
 
 Template.roomDetail.events =
-  'click #postMessage': (e, t) ->
+  'keypress #postText': (e, t) ->
+    if e.keyCode == 13
+      data =
+        roomId: Session.get('roomId')
+        text: t.find('#postText').value
+        avatar: Session.get('avatar')
 
-    data =
-      roomId: Session.get('roomId')
-      text: t.find('#postText').value
-      avatar: Session.get('avatar')
-
-    Meteor.call 'createMessage', data, (err, data) ->
-      if ! Meteor.user()?
-        Session.set('flash', "Your message posted successfully.")
-        redirectFn = -> router.navigate('me', {trigger: true})
-        setTimeout redirectFn, 2000
+      Meteor.call 'createMessage', data, (err, data) ->
+        $(t.find('#postText')).val('')
+        if ! Meteor.user()?
+          Session.set('flash', "Your message posted successfully.")
+          redirectFn = -> router.navigate('me', {trigger: true})
+          setTimeout redirectFn, 5000
 
   'click .voteUp': (e) ->
     elt = $(e.currentTarget)

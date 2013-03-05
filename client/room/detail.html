@@ -1,48 +1,47 @@
 <template name="roomDetail">
 
+{{#if room}}
+
 {{#with room}}
 
 <div class="avatar cf">
-  <h3><span>this is</span></h3>
   <h1>{{name}}</h1>
-  <h3><span>{{! distanceFromUser}} 43 ghosts</span><a href=""> share this room<img style="margin-bottom:-3px" src="images/share.png"></a></h3>
+  <h3><span>{{! distanceFromUser}} 43 ghosts</span><a href="" class="fR"><span>share room</span><img style="margin-bottom:-3px" src="images/share.png"></a></h3>
 </div>
 
 {{/with}}
 
-<a href="#">Back to list</a>
+<div class="list">
+  <ul class="toggle cf">
+    <li class="selected fL"><a href=""><h3 class="list-title">live</h3></a></li>
+    <li class="selected fL"><a href="#"><h3 clas="list-title">back all rooms</h3></a></li>
+  </ul>
 
-{{#if room}}
+  <ul class="posts">
+    {{#each messages}}
+      {{> messageDetail }}
+    {{/each}}
+  </ul>
+</div>
 
-  <div class="list">
-    <ul class="posts">
-      {{#each messages}}
-        {{> messageDetail }}
-      {{/each}}
-    </ul>
+<div id="share-dialog">
+  <!-- AddThis Button BEGIN -->
+  <div class="addthis_toolbox addthis_32x32_style" style="left:50px;top:0px;">
+  <a class="addthis_button_preferred_1"></a>
+  <a class="addthis_button_preferred_2"></a>
+  <a class="addthis_button_preferred_3"></a>
+  <a class="addthis_button_preferred_4"></a>
+  <a class="addthis_button_compact"></a>
   </div>
+  <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-513590d17908f55d"></script>
+  <!-- AddThis Button END -->
+</div>
 
-  {{! <div id="room-{{info}" class="room"> }}
+<div class="chat-entry">
+  <input id="postText" type="text" style="textinput" placeholder="saw what you REALLY think..." />
+</div>
 
 {{/if}}
-
-  <div id="share-dialog">
-    <!-- AddThis Button BEGIN -->
-    <div class="addthis_toolbox addthis_32x32_style" style="left:50px;top:0px;">
-    <a class="addthis_button_preferred_1"></a>
-    <a class="addthis_button_preferred_2"></a>
-    <a class="addthis_button_preferred_3"></a>
-    <a class="addthis_button_preferred_4"></a>
-    <a class="addthis_button_compact"></a>
-    </div>
-    <script type="text/javascript">var addthis_config = {"data_track_addressbar":false};</script>
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-513590d17908f55d"></script>
-    <!-- AddThis Button END -->
-  </div>
-
-  <div class="chat-entry">
-    <input id="postText" placeholder="what do you want really want to say?" style="text">
-    <button id="postMessage" style="submit">post</button>
-  </div>
 
 </template>

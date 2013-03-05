@@ -1,18 +1,16 @@
 <template name="messageDetail">
 
-<li id="message-{{_id}}" class="message" class="cf">
-  <h2 class="right-text span25 fR">{{score}} <img src="images/ghost-icon.png"></h2>
-  <img class="avatar-small fL" src="images/avatars/{{avatar.img}}">
-  <h2>{{avatar.name}}</h2>
+<li id="message-{{_id}}" class="cf">
   <div class="span100 fL">
-      <p>{{text}}<span class="date"> {{createdAt}}</span></p>
-      <ul class="social cf">
-          <li><a href="javascript://" data-messageid="{{_id}}" class="voteUp"><img src="images/yay.png"></a></li>
-          <li><a href="javascript://" data-messageid="{{_id}}" class="voteDown"><img src="images/boo.png"></a></li>
-          <li><a href="javascript://" data-messageid="{{_id}}" class="contact">contact</a></li>
-          <li><a href="javascript://" data-messageid="{{_id}}" class="share"><img src="images/share.png"></a></li>
-      </ul>
+    <a href="#message/{{_id}}"><p>{{text}} <span class="date">{{createdAt}}</span></p></a>
   </div>
+  <div class="fR sharing">
+    <h2 class="right-text span25 fR">{{score}}</h2>
+    <a href="javascript://" data-messageid="{{_id}}" class="voteDown"><img src="images/boo.png"></a>
+    <a href="javascript://" data-messageid="{{_id}}" class="voteUp"><img src="images/yay.png"></a>
+  </div>
+  <img src="/images/avatars/{{avatar.img}}" class="avatar-small fL">
+  <h3>{{avatar.name}}</h3>
 </li>
 
 </template>

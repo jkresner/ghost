@@ -17,6 +17,7 @@ Meteor.loginWithFacebook  = _.wrap Meteor.loginWithFacebook, (login, opts, callb
 Meteor.autorun ->
 
   roomId = Session.get('roomId')
+  $log 'autorun.roomId', roomId
 
   setCurrentRoom = ->
     $log 'setCurrentRoom', roomId
