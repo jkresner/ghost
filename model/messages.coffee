@@ -32,3 +32,4 @@ Meteor.methods
     #user = Meteor.users.findOne(@userId)
     data.createdAt = (new Date).getTime()
     Messages.insert data
+    data

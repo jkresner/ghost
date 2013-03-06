@@ -1,7 +1,7 @@
+permissions = ['email', 'user_events', 'user_groups', 'read_friendlists', 'publish_actions', ]
 Accounts.ui.config
   requestPermissions:
-    facebook: ['email', 'user_events', 'user_groups', 'read_friendlists', 'publish_actions', ]
-
+    facebook: permissions
 
 Meteor.loginWithFacebook  = _.wrap Meteor.loginWithFacebook, (login, opts, callback) ->
   newCallback = ->
@@ -9,9 +9,11 @@ Meteor.loginWithFacebook  = _.wrap Meteor.loginWithFacebook, (login, opts, callb
     # Set session avatar
     avatar = Session.get('avatar')
     if ! avatar.userId?
-      Avatars.update({_id: avatar._id}, {userId: Meteor.userId()})
+      up = Avatars.update({_id: avatar._id}, {$set: {userId: Meteor.userId()}})
+      debugger
     window.history.back()
-  login(opts, callback)
+    window.history.back()
+  login(opts, newCallback)
 
 
 setCurrentRoom = ->
@@ -44,7 +46,7 @@ Meteor.autorun ->
 
 
 Meteor.startup ->
-  # geo.setUserLocation()
+  #geo.setUserLocation()
 
   $ ->
     window.router = new GhostRouter()

@@ -25,6 +25,8 @@ placeVote = (elt, value) ->
 
 Template.roomDetail.events =
   'keypress #postText': (e, t) ->
+    form = $(e.currentTarget)
+    form.prop "disabled", true
     if e.keyCode == 13
       data =
         roomId: Session.get('roomId')
@@ -33,10 +35,14 @@ Template.roomDetail.events =
 
       Meteor.call 'createMessage', data, (err, data) ->
         $(t.find('#postText')).val('')
+        form.prop "disabled", false
         if ! Meteor.user()?
           Session.set('flash', "Your message posted successfully.")
           redirectFn = -> router.navigate('me', {trigger: true})
           setTimeout redirectFn, 5000
+      e.preventDefault()
+      e.stopPropagation()
+      false
 
   'click .voteUp': (e) ->
     elt = $(e.currentTarget)
@@ -52,7 +58,6 @@ Template.roomDetail.events =
     elt = $(evt.currentTarget)
     messageId = elt.data('messageid') # Yes, lower case, it's retarded
     router.navigate 'message/' + messageId
-    console.log("OPENING DIALOG")
     # $('#share-dialog').dialog('close')
     $('#share-dialog').dialog
       modal: true
