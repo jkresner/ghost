@@ -17,11 +17,8 @@
     <li class="selected fL"><a href=""><h3 clas="list-title">popular</h3></a></li>
   </ul>
 
-  <ul class="posts">
-    {{#each messages}}
-      {{> messageDetail }}
-    {{/each}}
-  </ul>
+  {{> roomMessages }}
+
 </div>
 
 <div id="share-dialog">

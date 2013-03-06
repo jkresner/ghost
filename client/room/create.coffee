@@ -1,7 +1,5 @@
 Template.roomCreate.error = -> Session.get 'roomCreateError'
 
-
-
 Template.roomCreate.events =
 
   'click button.add': (e, t) ->
@@ -27,8 +25,6 @@ Template.roomCreate.events =
           router.navigate "room/#{data}", { trigger: true }
         else
          console.log err
-
-
 
     # foundLocation = (loc) ->
     # sendCreate loc.coords.longitude, loc.coords.latitude

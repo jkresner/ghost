@@ -2,11 +2,6 @@
 
 Template.roomDetail.room = -> Session.get 'room'
 
-
-Template.roomDetail.messages = ->
-  Messages.find {}, { sort: { createdAt: -1 } }
-
-
 Template.roomDetail.distanceFromUser = ->
   roomLoc = @loc
   userLoc = Session.get('userLoc')

@@ -14,19 +14,25 @@ Meteor.loginWithFacebook  = _.wrap Meteor.loginWithFacebook, (login, opts, callb
   login(opts, callback)
 
 
-Meteor.autorun ->
-
+setCurrentRoom = ->
   roomId = Session.get('roomId')
-  $log 'autorun.roomId', roomId
+  $log 'autorun.setCurrentRoom', roomId
+  if roomId?
+    set = ->
+      Session.set 'room', Rooms.findOne(roomId)
+      Meteor.subscribe 'room_messages', roomId, ->
+    if Rooms? then set() else roomSubscribe(null, null, set)
 
-  setCurrentRoom = ->
-    $log 'setCurrentRoom', roomId
-    if roomId? then Session.set 'room', Rooms.findOne(roomId)
 
-  roomSubscribe = (lat, lon) ->
-    $log 'roomSubscribe', lat, lon
-    Meteor.subscribe 'rooms', lat, lon, setCurrentRoom
+roomSubscribe = (lat, lon, callback) ->
+  $log 'roomSubscribe' #, lat, lon
+  Meteor.subscribe 'rooms', lat, lon, callback
 
+
+Meteor.autorun ->
+  setCurrentRoom()
+
+Meteor.autorun ->
   #geoRoomSubscribe = (l) ->
   #  $log 'geoRoomSubscribe', l
   #  roomSubscribe l.coords.latitude, l.coords.longitude
@@ -34,10 +40,7 @@ Meteor.autorun ->
   #geo.getGeoLocation(geoRoomSubscribe)
 
   # we assume geo location is going to fail
-  roomSubscribe(null, null)
-
-  Meteor.subscribe 'room_messages', roomId, ->
-
+  roomSubscribe(null, null, setCurrentRoom)
 
 
 Meteor.startup ->
