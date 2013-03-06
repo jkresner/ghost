@@ -60,7 +60,7 @@ Template.roomDetail.events =
   'click .share': (evt) ->
     elt = $(evt.currentTarget)
     messageId = elt.data('messageid') # Yes, lower case, it's retarded
-    router.navigate 'message/' + messageId
+    #router.navigate 'message/' + messageId
     # $('#share-dialog').dialog('close')
     $('#share-dialog').dialog
       modal: true
