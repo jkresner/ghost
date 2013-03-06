@@ -9,7 +9,6 @@ Template.roomList.rooms = ->
   if method is 'all'
     Rooms.find()
 
-
 Template.roomList.hasLocation = ->
   if @loc
     if @loc[1] != null
@@ -21,7 +20,6 @@ Template.roomList.hasLocation = ->
       return false
   else
     return false
-
 
 Template.roomList.getDistanceToUser = ->
   if Session.get('userLoc')?

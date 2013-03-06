@@ -31,5 +31,13 @@ Meteor.methods
     #data.userId = @userId
     #user = Meteor.users.findOne(@userId)
     data.createdAt = (new Date).getTime()
-    Messages.insert data
+    id = Messages.insert data
+    if id
+      data._id = id
+      console.log('updating room ' + data.roomId)
+      console.log(data)
+      room = Rooms.findOne({name: data.roomId })
+      console.log(room)
+      ret = Rooms.update({name: data.roomId }, {$set: {latestMessage: data}})
+      console.log(ret)
     data
