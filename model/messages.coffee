@@ -38,6 +38,6 @@ Meteor.methods
       console.log(data)
       room = Rooms.findOne({name: data.roomId })
       console.log(room)
-      ret = Rooms.update({name: data.roomId }, {$set: {latestMessage: data}})
+      Rooms.update({name: data.roomId }, {$set: {latestMessage: data}})
       console.log(ret)
     data
