@@ -9,7 +9,6 @@ class GhostRouter extends Backbone.Router
     "avatar/:avatarId": "avatarDetail"
 
   initialize: ->
-    console.log 'Router.init'
     Session.set 'avatar', getValidUserAvatar(null)
 
   roomList: () ->
