@@ -10,12 +10,10 @@ Avatars.allow
   insert: (userId, avatar) -> false
   update: (userId, avatars, fields, mods) ->
     _.all avatars, (a) ->
-      debugger
       if a.userId? then return false # Already owned
       allowed = ["userId"]
       if _.difference(fields, allowed).length then return false # tried to write to forbidden field
       true
-
   remove: (userId, avatar) ->
     Meteor.users.findOne({id: userId}).admin ? true : false
 
@@ -72,12 +70,18 @@ avatarExpired = (avatar) ->
   avatar.createdAt < ((new Date()).getTime() - 24 * 60 * 60 *1000)
 
 generateAvatar = (user) ->
+
   avatar =
     createdAt: (new Date()).getTime()
     img: Random.choice avatars # TODO: FIX THIS Session.get('avatar_images')
     name: Random.choice(avatarFirstNames) + Random.choice(avatarLastNames)
     userId: user._id if user?
-  debugger
+
   retAvatar = Meteor.call 'createAvatar', avatar, (err, d) ->
     Session.set 'avatar', d
+
+  Meteor.call 'createAvatar', avatar, (err, d) ->
+    avatar._id = d
+    Session.set 'avatar', avatar
+
   avatar

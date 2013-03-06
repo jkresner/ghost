@@ -24,22 +24,25 @@ placeVote = (elt, value) ->
   Meteor.call 'createVote', vote
 
 Template.roomDetail.events =
-  'keypress #postText': (e, t) ->
-    form = $(e.currentTarget)
-    form.prop "disabled", true
+  'keypress input': (e, t) ->
+    input = t.find('#postText')
+
     if e.keyCode == 13
+
       data =
         roomId: Session.get('roomId')
-        text: t.find('#postText').value
+        text: input.value
         avatar: Session.get('avatar')
 
+      $log 'keypress input', input, input.value, data
+
       Meteor.call 'createMessage', data, (err, data) ->
-        $(t.find('#postText')).val('')
-        form.prop "disabled", false
+        $(input).val('')
         if ! Meteor.user()?
           Session.set('flash', "Your message posted successfully.")
           redirectFn = -> router.navigate('me', {trigger: true})
           setTimeout redirectFn, 5000
+
       e.preventDefault()
       e.stopPropagation()
       false
