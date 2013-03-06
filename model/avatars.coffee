@@ -34,7 +34,7 @@ Meteor.methods
   fetchAvatar: (userId) ->
     Avatars.findOne({userId: userId}, {sort:{createdAt: -1}})
   updateAvatar: (id, data) ->
-    Avatars.update({_id: id}, {$set: data})
+    Avatars.update({name: id}, {$set: data})
     console.log(data)
     data
 

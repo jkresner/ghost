@@ -13,19 +13,7 @@
   <div id="room-tab-content">
     <ul id="nearby-rooms" class="event tab" style="display: block;">
       {{#each rooms}}
-
-      <li class="cf">
-        <a href ="#room/{{ name }}">
-          <div class="event-title span75 fL">
-              <h3>{{ name }}</h3>
-          </div>
-          <h2 class="right-text span25 fR">{{ score }} <img src='images/ghost-icon.png'></h2>
-          <div class="top-post fL">
-              <p>"Help, I'm trapped in the bathroom!"<span class ="date"> 4 hours ago</span></p>
-          </div>
-        </a>
-      </li>
-
+        {{> roomListDetail }}
       {{/each}}
     </ul>
   </div>
