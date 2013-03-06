@@ -3,7 +3,7 @@ setCurrentRoom = ->
   $log 'autorun.setCurrentRoom', roomId
   if roomId?
     set = ->
-      Session.set 'room', Rooms.findOne(roomId)
+      Session.set 'room', Rooms.findOne({name: roomId})
       Meteor.subscribe 'room_messages', roomId, ->
     if Rooms? then set() else roomSubscribe(null, null, set)
 
@@ -26,5 +26,8 @@ Meteor.autorun ->
   setCurrentRoom()
 
 
+
 Meteor.autorun ->
+  # we assume geo location is going to fail
   roomSubscribe(null, null, setCurrentRoom)
+

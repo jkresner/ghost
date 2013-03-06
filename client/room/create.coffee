@@ -19,10 +19,10 @@ Template.roomCreate.events =
         button.prop "disabled", false
 
         if ! err?
-          console.log 'createRoom.success', data
+          console.log 'createRoom.success', data.name
           $(t.find("#roomName")).val('')
-          Session.set 'room', Rooms.findOne(data)
-          router.navigate "room/#{data}", { trigger: true }
+          Session.set 'room', Rooms.findOne(data._id)
+          router.navigate "room/#{data.name}", { trigger: true }
         else
          console.log err
 

@@ -1,7 +1,7 @@
 # owner: user id
 # name: String
 # description: String
-# ispublic: Boolean
+# //ispublic: Boolean
 # created_at
 
 Rooms = new Meteor.Collection 'rooms'
@@ -42,11 +42,19 @@ Meteor.methods
     #if !@userId then throw new Meteor.Error 403, "You must be logged in" #commented out as we allow anonymous users
 
     roomData =
-      owner: getUser() # took out owner as that is not part of the current design
+      owner: getUserId() # took out owner as that is not part of the current design
       name: d.name
-      ispublic: !! d.ispublic
+      #ispublic: !! d.ispublic
+
+    # Ensure room doesn't exist
+    existingRoom = Rooms.findOne({name: roomData.name})
+    console.log("Existing:")
+    console.log(existingRoom)
+    return existingRoom if existingRoom
 
     if data.lon?
       roomData.loc = [d.lon, d.lat]
 
     Rooms.insert roomData
+    console.log("Inserted: " + JSON.stringify(roomData))
+    roomData
