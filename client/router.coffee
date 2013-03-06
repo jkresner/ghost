@@ -17,7 +17,6 @@ class GhostRouter extends Backbone.Router
   roomDetail: (name) ->  # list of threads
     show = @showPage
     Meteor.call 'createRoom', {name: name}, (err, d) ->
-      debugger
       show 'roomDetail'
       if d.name isnt Session.get("roomId")
         $log 'roomDetail.settingSession', name
