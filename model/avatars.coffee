@@ -55,7 +55,6 @@ setSessionAvatar = ->
   user = Meteor.user()
 
   if ! avatar? && user?
-    debugger
     mostrecent_avatar = Meteor.call 'findAvatar', user._id
     if ! avatarExpired mostrecent_avatar
       avatar = mostrecent_avatar

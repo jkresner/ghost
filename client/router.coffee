@@ -14,11 +14,14 @@ class GhostRouter extends Backbone.Router
   roomList: () ->
     @showPage 'roomList'
 
-  roomDetail: (roomId) ->  # list of threads
-    @showPage 'roomDetail'
-    if roomId isnt Session.get("roomId")
-      $log 'roomDetail.settingSession', roomId
-      Session.set "roomId", roomId
+  roomDetail: (name) ->  # list of threads
+    show = @showPage
+    Meteor.call 'createRoom', {name: name}, (err, d) ->
+      debugger
+      show 'roomDetail'
+      if d.name isnt Session.get("roomId")
+        $log 'roomDetail.settingSession', name
+        Session.set "roomId", name
 
   roomCreate: () ->
     @showPage 'roomCreate'

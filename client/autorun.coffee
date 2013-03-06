@@ -3,7 +3,7 @@ setCurrentRoom = ->
   $log 'autorun.setCurrentRoom', roomId
   if roomId?
     set = ->
-      Session.set 'room', Rooms.findOne(roomId)
+      Session.set 'room', Rooms.findOne({name: roomId})
       Meteor.subscribe 'room_messages', roomId, ->
     if Rooms? then set() else roomSubscribe(null, null, set)
 

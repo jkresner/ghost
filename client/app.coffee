@@ -8,7 +8,6 @@ Meteor.loginWithFacebook  = _.wrap Meteor.loginWithFacebook, (login, opts, callb
     callback()
     # Set session avatar
     avatar = Session.get('avatar')
-    debugger
     if ! avatar.userId?
       up = Meteor.call 'updateAvatar', avatar._id, {userId: Meteor.userId()}, (err, d) ->
         Session.set('avatar', d)
