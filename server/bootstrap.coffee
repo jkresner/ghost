@@ -1,3 +1,4 @@
+#Avatars.remove({})
 #Rooms.remove({})
 #Messages.remove({})
 #mongo = __meteor_bootstrap__.require 'mongoose'

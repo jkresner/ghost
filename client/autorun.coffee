@@ -14,14 +14,17 @@ roomSubscribe = (lat, lon, callback) ->
 
 
 Meteor.autorun ->
-  setCurrentRoom()
+  user = Meteor.user()
+  if user?
+    Meteor.subscribe 'user_avatars', user._id, ->
+      validAvatar = getValidUserAvatar(user)
+      $log 'autorun.validAvatar', validAvatar
+      Session.set 'avatar', validAvatar
+
 
 Meteor.autorun ->
-  #geoRoomSubscribe = (l) ->
-  #  $log 'geoRoomSubscribe', l
-  #  roomSubscribe l.coords.latitude, l.coords.longitude
+  setCurrentRoom()
 
-  #geo.getGeoLocation(geoRoomSubscribe)
 
-  # we assume geo location is going to fail
+Meteor.autorun ->
   roomSubscribe(null, null, setCurrentRoom)

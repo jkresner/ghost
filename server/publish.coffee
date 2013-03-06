@@ -16,4 +16,10 @@ Meteor.publish 'rooms', (lat,lon) ->
 
 
 Meteor.publish 'room_messages', (roomId) ->
-  Messages.find({roomId: roomId}, {sort: {createdAt: -1}})
+  Messages.find({roomId: roomId})# .sort({createdAt: -1})
+  # {sort: {createdAt: -1}})
+
+
+Meteor.publish 'user_avatars', (userId) ->
+  console.log 'publish.avatars', userId
+  Avatars.find({userId: userId},{ sort:{'createdAt': -1} })

@@ -16,7 +16,7 @@ Template.roomCreate.events =
 
       Meteor.call 'createRoom', data, { wait: false } ,(err, data) ->
 
-        button.prop "disabled", true
+        button.prop "disabled", false
 
         if ! err?
           console.log 'createRoom.success', data
