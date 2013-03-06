@@ -8,11 +8,12 @@ Meteor.loginWithFacebook  = _.wrap Meteor.loginWithFacebook, (login, opts, callb
     callback()
     # Set session avatar
     avatar = Session.get('avatar')
+    debugger
     if ! avatar.userId?
-      up = Avatars.update({_id: avatar._id}, {$set: {userId: Meteor.userId()}})
-      debugger
-    window.history.back()
-    window.history.back()
+      up = Meteor.call 'updateAvatar', avatar._id, {userId: Meteor.userId()}, (err, d) ->
+        Session.set('avatar', d)
+        window.history.back()
+        window.history.back()
   login(opts, newCallback)
 
 

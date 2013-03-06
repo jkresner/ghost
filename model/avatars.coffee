@@ -27,9 +27,18 @@ Avatars.allow
 
 Meteor.methods
   createAvatar: (data) ->
+    console.log('MAKE AVATAR')
     data.createdAt = (new Date).getTime()
-    Avatars.insert data
-
+    id = Avatars.insert data
+    data._id = id
+    console.log(data)
+    data
+  fetchAvatar: (userId) ->
+    Avatars.findOne({userId: userId}, {sort:{createdAt: -1}})
+  updateAvatar: (id, data) ->
+    Avatars.update({_id: id}, {$set: data})
+    console.log(data)
+    data
 
 avatars = []
 for i in [1..25]
@@ -48,7 +57,8 @@ setSessionAvatar = ->
   user = Meteor.user()
 
   if ! avatar? && user?
-    mostrecent_avatar = Avatars.findOne({userId: user._id}, {sort: {created_at: -1}})
+    debugger
+    mostrecent_avatar = Meteor.call 'findAvatar', user._id
     if ! avatarExpired mostrecent_avatar
       avatar = mostrecent_avatar
 
@@ -67,8 +77,7 @@ generateAvatar = (user) ->
     img: Random.choice avatars # TODO: FIX THIS Session.get('avatar_images')
     name: Random.choice(avatarFirstNames) + Random.choice(avatarLastNames)
     userId: user._id if user?
-  Meteor.call 'createAvatar', avatar, (err, d) ->
-    avatar._id = d
-    debugger
-    Session.set 'avatar', avatar
+  debugger
+  retAvatar = Meteor.call 'createAvatar', avatar, (err, d) ->
+    Session.set 'avatar', d
   avatar

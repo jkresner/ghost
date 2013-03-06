@@ -1,5 +1,7 @@
 Meteor.publish 'rooms', (lat,lon) ->
 
+Meteor.publish 'rooms', (lat,lon) ->
+
   # checking if lon exists. lat can also contain an error message (if the user denies geoLocation)
   # if lon?
   #   console.log 'publish.rooms', lat, lon
